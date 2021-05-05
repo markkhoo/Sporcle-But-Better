@@ -26,7 +26,7 @@ router.get('/newgame/:id', withAuth, async (req, res) => {
                 },
             ],
         });
-        const continent = continentData.get({ plain: true });
+        const game = gameData.get({ plain: true });
         res.render('/gamepage', {
             game,
             logged_in: req.session.logged_in
@@ -43,12 +43,9 @@ router.get('/profile', withAuth, async (req, res) => {
             attributes: { exclude: 'password' },
             include: [
                 {
-                    model: Game
-                },
-                {
-                    model: Continent,
+                    model: Game,
                     include: {
-                        model: Countries
+                        model: Continent,
                     },
                 },
             ],
@@ -70,12 +67,9 @@ router.get('/profile/:username', withAuth, async (req, res) => {
         const userData = await User.findByPk(req.params.username, {
             include: [
                 {
-                    model: Game
-                },
-                {
-                    model: Continent,
+                    model: Game,
                     include: {
-                        model: Countries
+                        model: Continent,
                     },
                 },
             ],
