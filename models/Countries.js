@@ -20,14 +20,14 @@ Countries.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        continent_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'continent',
-                key: 'id',
-            },
-        },
+        // continent_id: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     references: {
+        //         model: 'continent',
+        //         key: 'id',
+        //     },
+        // },
     },
     {
         sequelize,
