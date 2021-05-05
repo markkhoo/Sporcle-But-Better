@@ -16,23 +16,17 @@ router.get('/signup', (req, res) => {
 
 router.get('/newgame/:id', withAuth, async (req, res) => {
     try {
-        const gameData = await Game.findOne({
+        const continentData = await Continent.findOne({
             where: {
-                continent_id: req.params.id,
+               id: req.params.id
             },
             include: [
                 {
-                    model: User,
-                },
-                {
-                    model: Continent,
-                    include: {
-                        model: Countries,
-                    },
+                    model: Countries
                 },
             ],
         });
-        const game = gameData.get({ plain: true });
+        const continent = continentData.get({ plain: true });
         res.render('/gamepage', {
             game,
             logged_in: req.session.logged_in
@@ -49,9 +43,12 @@ router.get('/profile', withAuth, async (req, res) => {
             attributes: { exclude: 'password' },
             include: [
                 {
-                    model: Game,
+                    model: Game
+                },
+                {
+                    model: Continent,
                     include: {
-                        model: Continent,
+                        model: Countries
                     },
                 },
             ],
@@ -73,9 +70,12 @@ router.get('/profile/:username', withAuth, async (req, res) => {
         const userData = await User.findByPk(req.params.username, {
             include: [
                 {
-                    model: Game,
+                    model: Game
+                },
+                {
+                    model: Continent,
                     include: {
-                        model: Continent,
+                        model: Countries
                     },
                 },
             ],
