@@ -16,19 +16,13 @@ router.get('/signup', (req, res) => {
 
 router.get('/newgame/:id', withAuth, async (req, res) => {
     try {
-        const gameData = await Game.findOne({
+        const continentData = await Continent.findOne({
             where: {
-                continent_id: req.params.id,
+               id: req.params.id
             },
             include: [
                 {
-                    model: User,
-                },
-                {
-                    model: Continent,
-                    include: {
-                        model: Countries,
-                    },
+                    model: Countries
                 },
             ],
         });
