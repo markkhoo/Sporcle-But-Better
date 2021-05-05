@@ -21,12 +21,4 @@ Game.belongsTo(User, {
     onDelete: 'CASCADE'
 });
 
-Game.hasMany(Continent, {
-    foreignKey: 'continent_id'
-});
-
-Continent.belongsTo(Game, {
-    foreignKey: 'continent_id'
-});
-
 module.exports = { User, Countries, Continent, Game };
