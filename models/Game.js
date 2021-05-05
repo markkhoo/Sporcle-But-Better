@@ -20,22 +20,22 @@ Game.init(
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        continent_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'continent',
-                key: 'id'
-            },
-        },
-        user_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'user',
-                key: 'id'
-            },
-        },
+        // continent_id: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     references: {
+        //         model: 'continent',
+        //         key: 'id'
+        //     },
+        // },
+        // user_id: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     references: {
+        //         model: 'user',
+        //         key: 'id'
+        //     },
+        // },
     },
     {
         sequelize,

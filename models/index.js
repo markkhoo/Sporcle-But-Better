@@ -21,11 +21,11 @@ Game.belongsTo(User, {
     onDelete: 'CASCADE'
 });
 
-Game.hasMany(Continent, {
+Game.belongsTo(Continent, {
     foreignKey: 'continent_id'
 });
 
-Continent.belongsTo(Game, {
+Continent.hasMany(Game, {
     foreignKey: 'continent_id'
 });
 
