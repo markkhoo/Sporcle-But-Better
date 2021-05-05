@@ -10,7 +10,10 @@ const seedDatabase = async () => {
 
     await Continent.bulkCreate(continentData);
     await Countries.bulkCreate(countriesData);
-    await User.bulkCreate(user);
+    await User.bulkCreate(user, {
+        individualHooks: true,
+        returning: true,
+    });
 
     process.exit(0);
 };
