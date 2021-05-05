@@ -2,9 +2,13 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
-class Countries extends Model {}
+class User extends Model {
+  checkPassword(loginPw) {
+    return bcrypt.compareSync(loginPw, this.password); 
+  }
+}
 
-Countries.init(
+User.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -12,28 +16,32 @@ Countries.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        name: {
+        username: {
             type: DataTypes.STRING,
             allowNull: false,
+            is: /^[0-9a-f]{20}$/,
         },
-        capital: {
+        password: {
             type: DataTypes.STRING,
             allowNull: false,
+            validate: {
+                len: [8]
+            },
         },
-        continent_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'continent',
-                key: 'id',
+    },
+    {
+        hooks: {
+            async beforeCreate(newUserData) {
+                newUserData.password = await bcrypt.hash(newUserData.password, 10);
+                return newUserData;
             },
         },
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'countries'
+        modelName: 'user'
     }
 );
 
-module.exports = Countries;
+module.exports = User;
