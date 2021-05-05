@@ -19,7 +19,7 @@ User.init(
         username: {
             type: DataTypes.STRING,
             allowNull: false,
-            is: /^[0-9a-f]{20}$/,
+            is: /^[0-9a-z]{20}$/,
         },
         password: {
             type: DataTypes.STRING,
