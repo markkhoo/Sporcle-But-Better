@@ -76,6 +76,10 @@ document.getElementById("game-7").addEventListener("click", function (event) {
     mainGame(7);
 });
 
+
+
+
+
 // ------ CODEPEN ------------------------------------------------
 const testObject = {
     id: 7,
@@ -100,10 +104,13 @@ const testObject = {
 let randSeq = [];
 let randomizedCapitals = [];
 let capitalIndex = 0;
+let gameCapID = 0;
+let score = 0;
 
 // Test Game Start
 document.getElementById("game-7").addEventListener("click", function (event) {
   event.preventDefault();
+  score = 0;
   renderGroup(testObject);
 });
 
@@ -143,8 +150,9 @@ function renderCapital (){
     let p = document.createElement("h3");
     p.textContent = randomizedCapitals[capitalIndex].capital;
     p.setAttribute("class", "capitalDisplay");
-    p.setAttribute("data-id", randomizedCapitals[capitalIndex].capital);
+    p.setAttribute("data-id", randomizedCapitals[capitalIndex].id);
     capDisplay.appendChild(p);
+    gameCapID = randomizedCapitals[capitalIndex].id;
   } else {
     // Render End Game Screen Here
     console.log("End of Capitals");
@@ -168,9 +176,16 @@ function renderCountries (data){
 
 // Cycle Capitals
 function countryClicked() {
-  let countryID = this.getAttribute("data-id");
+  let countryID = parseInt(this.getAttribute("data-id"));
+
+  if(countryID === gameCapID) {
+    score += 1;
+    console.log(score);
+  } else {
+    console.log(score);
+  };
+  
+  // Render Capital after score is calculated
   capitalIndex += 1;
   renderCapital();
-
-
 };
