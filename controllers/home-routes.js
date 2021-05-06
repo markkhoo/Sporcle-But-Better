@@ -20,7 +20,7 @@ router.get('/signup', (req, res) => {
 });
 
 router.get('/newgame', withAuth, (req, res) => {
-    res.render('gamepage');
+    res.render('game');
     // try {
     //     const continentData = await Continent.findOne({
     //         where: {
