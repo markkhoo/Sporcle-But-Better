@@ -103,6 +103,7 @@ const testObject = {
 const capDisplay =  document.getElementById("capitalContainer");
 const cList =       document.getElementById("countryContainer");
 const startButton = document.getElementById("buttonGroup");
+const scoreButton = document.getElementById("endScreen");
 
 // Global Variables
 let randSeq = [];
@@ -116,24 +117,37 @@ let stopTime = 0;
 // Test Game Start
 document.getElementById("game-7").addEventListener("click", function (event) {
   event.preventDefault();
+  scoreButton.innerHTML = "";
   gameStarted = true;
   score = 0;
   stopTime = 0;
   displayButton(false);
+  displayEndScreen(false);
   renderGroup(testObject);
 });
 
-// // INIT
-// function init() {
-//   displayButton(true);
-// };
+// INIT
+init();
+function init() {
+  displayButton(true);
+  displayEndScreen(false);
+};
 
-// Show and Hide Button
+// Show and Hide Start Button
 function displayButton(displayed){
   if(displayed === true) {
     startButton.style.setProperty('display', 'initial');
   } else if (displayed === false) {
     startButton.style.setProperty('display', 'none');
+  };
+};
+
+// Show and Hide End Screen
+function displayEndScreen(displayed){
+    if(displayed === true) {
+    scoreButton.style.setProperty('display', 'initial');
+  } else if (displayed === false) {
+    scoreButton.style.setProperty('display', 'none');
   };
 };
 
@@ -182,7 +196,7 @@ function renderCapital (){
     displayButton(true);
     cList.innerHTML = "";
     // Render End Game Screen Here
-    console.log("End of Capitals");
+    gameEnd();
   };
 };
 
@@ -199,7 +213,7 @@ function renderCountries (data){
   };
 };
 
-// Cycle Capitals
+// Cycle Capitals and Score Calculate
 function countryClicked() {
   let countryID = parseInt(this.getAttribute("data-id"));
 
@@ -216,7 +230,7 @@ function countryClicked() {
 };
 
 // Game Timer
-function gameTimer () {
+function gameTimer() {
   let timeInterval = setInterval(function(){
     stopTime += 10;
     if(!gameStarted){
@@ -225,3 +239,42 @@ function gameTimer () {
     };
   },10);
 };
+
+// End Screen and Submit Score
+function gameEnd() {
+  let final = document.createElement("button");
+  final.innerHTML = "Submit Score"
+  final.setAttribute("type", "button");
+  final.onclick = hideOnClick;
+  scoreButton.appendChild(final);
+  
+  displayEndScreen(true);
+};
+
+// Hide onClick
+function hideOnClick() {
+  this.style.setProperty('display', 'none');
+  // this.parentElement.innerHTML = "";
+};
+
+// ------ Codepen Code based on this HTML ---------------------------------
+// `
+// <body>
+//   <div id="buttonGroup">
+//     <button type="button" id="game-7">start</button>
+//   </div>
+//   <div id="endScreen">
+// <!--     <button type="button" id="highscore">Submit Score</button> -->
+//   </div>
+//   <div class="countries">
+//     <h1>Antarctica</h1>
+//     <ul id="countryContainer">
+//     </ul>
+//   </div>
+//   <div class="capital">
+//     <h3>Capital:</h3>
+//     <div id="capitalContainer">
+//     </div>
+//   </div>
+// </body>
+// `
