@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #000;
+}
+
+#wrapper {
+    position: relative;
+    min-height: 100vh;
+}
+
+#background {
+    background: url('/images/worldmap.jpg') no-repeat;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 96px;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .5;
+}
+
+#header {
+    border-bottom: 10px solid #fff;
+    margin: 0px;
+    padding: 20px;
+    color: #fff;
+    display: flex;
+}
+
+#header .spacing {
+    padding: 0px;
+}
+
+#header #title, #header #navigation, #header #form {
+    float: left;
+    width: 33.33%;
+}
+
+#header #title h1 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 25px;
+}
+
+#header #navigation ul {
+    display: flex;
+    margin-top: 10px;
+}
+
+#header #navigation ul li {
+    list-style: none;
+}
+
+#header #navigation ul li a {
+    padding: 10px;
+    color: #fff;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+#form form {
+    position: relative;
+}
+
+#form #searchArea label {
+    position: absolute;
+    top: -12px;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+#form #searchArea input {
+    width: 234px;
+    height: 32px;
+    padding: 5px;
+}
+
+#form button {
+    border: 1px solid #ccc;
+    padding: 5px 15px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+}
+
+#content {
+    border-radius: 10px;
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #fff;
+    width: 300px;
+    margin: 50px auto 0;
+    padding: 30px;
+}
+
+#content #instructions {
+    padding: 20px;
+}
+
+#content #instructions ul {
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+#content .map {
+    width: 100%;
+}
+
+#login {
+    border-radius: 10px;
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #fff;
+    width: 300px;
+    margin: 50px auto 0;
+    padding: 30px;
+}
+
+#login .loginForm {
+    margin-top: 10px;
+}
+
+#login .loginForm #password {
+    margin-top: 10px;
+}
+
+#login .loginForm #loginBtn  button {
+    border: 1px solid #ccc;
+    padding: 6px 15px;
+    margin: 10px 0;
+    width: 75px;
+    float: right;
+    cursor: pointer;
+}
+
+#login .loginForm a {
+    margin: 20px 0;
+    display: inline-block;
+    width: 100%;
+    color: #0077c0;
+    font-size: 12px;
+    text-align: center;
+}
+
+#login .loginForm input {
+    width: 275px;
+    padding: 5px 10px;
+}
+
+#login .loginForm label {
+    font-size: 14px;
+}
+
+#signup {
+    border-radius: 10px;
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #fff;
+    width: 300px;
+    height: 250px;
+    margin: 50px auto 0;
+    padding: 30px;
+}
+
+#signup .signupUser {
+    margin-top: 10px;
+}
+
+#signup .signupUser #userPass {
+    margin-top: 10px;
+}
+
+#signup .signupUser #signupBtn button  {
+    border: 1px solid #ccc;
+    padding: 6px 15px;
+    margin: 10px 0;
+    width: 100px;
+    float: right;
+    cursor: pointer;
+}
+
+#signup .signupUser input {
+    width: 275px;
+    padding: 5px 10px;
+}
+
+#signup .signupUser label {
+    font-size: 14px
+}
+
+
