@@ -103,14 +103,18 @@ const testObject = {
 // Global Variables
 let randSeq = [];
 let randomizedCapitals = [];
+let gameStarted = false;
 let capitalIndex = 0;
 let gameCapID = 0;
 let score = 0;
+let stopTime = 0;
 
 // Test Game Start
 document.getElementById("game-7").addEventListener("click", function (event) {
   event.preventDefault();
+  gameStarted = true;
   score = 0;
+  stopTime = 0;
   renderGroup(testObject);
 });
 
@@ -124,6 +128,8 @@ function renderGroup(quizData) {
   capitalIndex = 0;
   renderCapital();
 
+  // Start Timer
+  gameTimer();
 };
 
 // Randomize Capitals
@@ -155,6 +161,7 @@ function renderCapital (){
     gameCapID = randomizedCapitals[capitalIndex].id;
   } else {
     // Render End Game Screen Here
+    gameStarted = false;
     console.log("End of Capitals");
   };
 };
@@ -188,4 +195,15 @@ function countryClicked() {
   // Render Capital after score is calculated
   capitalIndex += 1;
   renderCapital();
+};
+
+// Game Timer
+function gameTimer () {
+  let timeInterval = setInterval(function(){
+    stopTime += 10;
+    if(!gameStarted){
+      console.log(stopTime);
+      clearInterval(timeInterval);
+    };
+  },10);
 };
