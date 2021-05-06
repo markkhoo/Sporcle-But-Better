@@ -2,20 +2,25 @@ const router = require('express').Router();
 const { User, Game, Countries, Continent } = require('../models');
 const withAuth = require('../utils/auth');
 
+router.get('/', (req, res) => {
+    res.render('homepage');
+})
+
+
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
         res.redirect('/profile');
         return;
     }
-    res.render('/login');
+    res.render('login');
 });
 
 router.get('/signup', (req, res) => {
-    res.render('/signup');
+    res.render('signup');
 });
 
 router.get('/newgame/:id', withAuth, (req, res) => {
-    res.render('/gamepage');
+    res.render('gamepage');
     // try {
     //     const continentData = await Continent.findOne({
     //         where: {
@@ -54,7 +59,7 @@ router.get('/profile', withAuth, async (req, res) => {
         });
         const user = userData.get({ plain: true });
 
-        res.render('/profile', {
+        res.render('profile', {
             ...user,
             logged_in: true
         });
@@ -66,7 +71,10 @@ router.get('/profile', withAuth, async (req, res) => {
 
 router.get('/profile/:username', withAuth, async (req, res) => {
     try {
-        const userData = await User.findByPk(req.params.username, {
+        const userData = await User.findOne({
+            where: {
+                username: req.params.username,
+            },
             include: [
                 {
                     model: Game,
@@ -80,7 +88,7 @@ router.get('/profile/:username', withAuth, async (req, res) => {
             alert('User not found!');
         }
         const user = userData.get({ plain: true });
-        res.render('/profile', {
+        res.render('searchuser', {
             user,
             logged_in: req.session.logged_in
         });
