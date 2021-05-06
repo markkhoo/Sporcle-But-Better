@@ -26,11 +26,12 @@ router.get('/newgame/:id', withAuth, async (req, res) => {
                 },
             ],
         });
-        const game = gameData.get({ plain: true });
+        const continent = continentData.get({ plain: true });
         res.render('/gamepage', {
-            game,
+            continent,
             logged_in: req.session.logged_in
         });
+        res.status(200).json(continent);
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
