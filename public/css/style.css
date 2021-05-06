@@ -1,29 +1,87 @@
-body {
-    background-color: black;
-    color: white;
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#wrapper {
+    background-color: #000;
 }
 
 #header {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 25px;
+    border-bottom: 10px solid #fff;
+    margin: 0px;
+    padding: 20px;
+    color: #fff;
+    display: flex;
+}
+
+#header .spacing {
+    padding: 0px;
+}
+
+#header #title, #header #navigation, #header #form {
     float: left;
-    margin: 10px;
+    width: 33.33%;
+}
+
+#header #title h1 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 25px;
+}
+
+#header #navigation ul {
+    display: flex;
+    margin-top: 10px;
+}
+
+#header #navigation ul li {
+    list-style: none;
+}
+
+#header #navigation ul li a {
+    padding: 10px;
+    color: #fff;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+#form form {
+    position: relative;
+}
+
+#form #searchArea label {
+    position: absolute;
+    top: -12px;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+#form #searchArea input {
+    width: 234px;
+    height: 32px;
+    padding: 5px;
+}
+
+#form button {
+    border: 1px solid #ccc;
+    padding: 5px 15px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+}
+
+#content #instructions {
+    color:#fff;
     padding: 20px;
 }
 
-#navigation {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font: 15px;
-    float: center;
-    margin: 10px;
-    padding: 20px;
-    display: inline-block;
+#content #instructions ul {
+    margin-top: 10px;
+    margin-left: 30px;
 }
 
-#searchBtn {
-    float: right;
-}
-
-#searchArea {
-    float: right;
+#content .map {
+    width: 100%;
 }
