@@ -10,6 +10,8 @@ const currentCorrect = document.getElementById("currentCorrect");
 const pointCountries = document.getElementById("totalCountries");
 const timerDisplay = document.getElementById("timer");
 const displayContinent = document.getElementById("displayContinent");
+const countryGroup = document.getElementById("countryGroup");
+const capitalGroup = document.getElementById("capitalGroup");
 
 // Global Variables
 let randSeq = [];
@@ -29,6 +31,7 @@ init();
 function init() {
     displayButton(true);
     displayEndScreen(false);
+    displayGame(false);
 };
 
 // Main Game Function
@@ -97,6 +100,7 @@ function onStartGame(data) {
     renderScore();
     displayButton(false);
     displayEndScreen(false);
+    displayGame(true);
 };
 
 // Show and Hide Start Button
@@ -114,6 +118,17 @@ function displayEndScreen(displayed) {
         scoreButton.style.setProperty('display', 'initial');
     } else if (displayed === false) {
         scoreButton.style.setProperty('display', 'none');
+    };
+};
+
+// Show and Hide Country Group & Capital Group
+function displayGame(displayed) {
+    if (displayed === true) {
+        countryGroup.style.setProperty('display', 'initial');
+        capitalGroup.style.setProperty('display', 'initial');
+    } else if (displayed === false) {
+        countryGroup.style.setProperty('display', 'none');
+        capitalGroup.style.setProperty('display', 'none');
     };
 };
 
@@ -209,6 +224,7 @@ function gameEnd() {
     scoreButton.appendChild(final);
 
     displayEndScreen(true);
+    displayGame(false);
 };
 
 // Milliseconds to Time
