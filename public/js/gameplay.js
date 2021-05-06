@@ -99,6 +99,10 @@ const testObject = {
         }
     ]
 };
+// Global Pointers
+const capDisplay =  document.getElementById("capitalContainer");
+const cList =       document.getElementById("countryContainer");
+const startButton = document.getElementById("buttonGroup");
 
 // Global Variables
 let randSeq = [];
@@ -115,8 +119,23 @@ document.getElementById("game-7").addEventListener("click", function (event) {
   gameStarted = true;
   score = 0;
   stopTime = 0;
+  displayButton(false);
   renderGroup(testObject);
 });
+
+// // INIT
+// function init() {
+//   displayButton(true);
+// };
+
+// Show and Hide Button
+function displayButton(displayed){
+  if(displayed === true) {
+    startButton.style.setProperty('display', 'initial');
+  } else if (displayed === false) {
+    startButton.style.setProperty('display', 'none');
+  };
+};
 
 // Render Group
 function renderGroup(quizData) {
@@ -149,7 +168,6 @@ function shuffleCapitals (data){
 
 // Render Capital
 function renderCapital (){
-  const capDisplay = document.getElementById("capitalContainer");
   capDisplay.innerHTML = "";
   // Display Current Capital
   if(randomizedCapitals[capitalIndex] != undefined){
@@ -160,16 +178,16 @@ function renderCapital (){
     capDisplay.appendChild(p);
     gameCapID = randomizedCapitals[capitalIndex].id;
   } else {
-    // Render End Game Screen Here
     gameStarted = false;
+    displayButton(true);
+    cList.innerHTML = "";
+    // Render End Game Screen Here
     console.log("End of Capitals");
   };
 };
 
 // Render Countries
 function renderCountries (data){
-  const cList = document.getElementById("countryContainer");
-  cList.innerHTML = "";
   // Create List Elements
   for(let i = 0; i < data.countries.length; i++) {
     let li = document.createElement("li");
