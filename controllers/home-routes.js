@@ -19,30 +19,7 @@ router.get('/signup', (req, res) => {
     res.render('signup');
 });
 
-<<<<<<< HEAD
-router.get('/newgame/:id', withAuth, async (req, res) => {
-    try {
-        const continentData = await Continent.findOne({
-            where: {
-               id: req.params.id
-            },
-            include: [
-                {
-                    model: Countries
-                },
-            ],
-        });
-        const game = gameData.get({ plain: true });
-        res.render('/gamepage', {
-            game,
-            logged_in: req.session.logged_in
-        });
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
-=======
-router.get('/newgame/:id', withAuth, (req, res) => {
+router.get('/newgame', withAuth, (req, res) => {
     res.render('gamepage');
     // try {
     //     const continentData = await Continent.findOne({
@@ -65,7 +42,6 @@ router.get('/newgame/:id', withAuth, (req, res) => {
     //     console.log(err);
     //     res.status(500).json(err);
     // }
->>>>>>> fbe7cca58e6cad60e3845015867a09e1ee1d219e
 });
 
 router.get('/profile', withAuth, async (req, res) => {
