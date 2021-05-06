@@ -6,6 +6,7 @@
 
 #wrapper {
     background-color: #000;
+    min-height: 110vh;
 }
 
 #header {
@@ -84,4 +85,50 @@
 
 #content .map {
     width: 100%;
+}
+
+#login {
+    border-radius: 10px;
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #fff;
+    width: 300px;
+    margin: 50px auto 0;
+    padding: 30px;
+
+}
+
+#login .loginForm {
+    margin-top: 10px;
+}
+
+#login .loginForm #password {
+    margin-top: 10px;
+}
+
+#login .loginForm #loginBtn  button {
+    border: 1px solid #ccc;
+    padding: 6px 15px;
+    margin: 10px 0;
+    width: 75px;
+    float: right;
+    cursor: pointer;
+}
+
+#login .loginForm a {
+    margin: 20px 0;
+    display: inline-block;
+    width: 100%;
+    color: #0077c0;
+    font-size: 12px;
+    text-align: center;
+}
+
+#login .loginForm input {
+    width: 275px;
+    padding: 5px 10px;
+}
+
+#login .loginForm label {
+    font-size: 14px;
 }
