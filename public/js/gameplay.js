@@ -15,6 +15,7 @@ let capitalIndex = 0;
 let gameCapID = 0;
 let score = 0;
 let stopTime = 0;
+let currentContinent = 0;
 
 // ------ ALL FUNCTIONS ------------------------------------------
 // initialize
@@ -34,12 +35,34 @@ function mainGame(continent_id) {
         })
         .then(data => {
 
-            console.log(data);
-
             // Start Game
             onStartGame();
+            currentContinent = continent_id;
             renderGroup(data);
         });
+};
+
+// Submit Score
+function hideOnClick() {
+    this.style.setProperty('display', 'none');
+    // this.parentElement.innerHTML = "";
+
+    fetch(`/api/game`, {
+        method: 'POST',
+        body: JSON.stringify({
+            score: score,
+            time: stopTime,
+            continent_id: currentContinent
+        }),
+        headers: { 'Content-Type': 'application/json' }
+    })
+    .then(res => {
+        if(res.ok) {
+            console.log('Score Submitted');
+        } else {
+            alert(res.statusText);
+        };
+    });
 };
 
 // On Start Game Button click
@@ -48,6 +71,7 @@ function onStartGame() {
     gameStarted = true;
     score = 0;
     stopTime = 0;
+    currentContinent = 0;
     displayButton(false);
     displayEndScreen(false);
 };
@@ -164,16 +188,10 @@ function gameEnd() {
     let final = document.createElement("button");
     final.innerHTML = "Submit Score"
     final.setAttribute("type", "button");
-    final.onclick = hideOnClick;
+    final.onclick = hideOnClick; // <== Score gets submitted here!
     scoreButton.appendChild(final);
 
     displayEndScreen(true);
-};
-
-// Hide onClick
-function hideOnClick() {
-    this.style.setProperty('display', 'none');
-    // this.parentElement.innerHTML = "";
 };
 
 // ------ ALL LISTENERS ------------------------------------------
