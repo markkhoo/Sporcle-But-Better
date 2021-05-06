@@ -1,21 +1,20 @@
 <h1>Sign Up</h1>
-<form action="/signup" method="POST">
+<form class="signupUser">
     <div>
         <label>Username:</label>
-        <input type="text" name="username" />
+        <input id="userWant" type="text" name="username" />
     </div>
-
     <div>
         <label>Password:</label>
-        <input type="password" name="password" />
+        <input id="userPass" type="password" name="password" />
     </div>
 
      <div>
         <label>Confirm Password:</label>
-        <input type="password" name="password" />
+        <input id="passCheck" type="password" name="password" />
     </div>
-    
     <div>
         <button type="submit">Sign Up</button>
     </div>
 </form>
+<script src="/js/signup.js"></script>

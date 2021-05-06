@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const sequelize = require('../../config/connection');
 const { User, Game, Continent } = require('../../models');
 const withAuth = require('../../utils/auth');
 
@@ -10,7 +11,10 @@ router.get('/', async (req, res) => {
             },
             include: {
                 model: Game,
-                include: {
+                order: [
+                    [sequelize.fn('max', sequelize.col('score')), 'DESC'],
+                ],
+                    include: {
                     model: Continent,
                 },
             },
@@ -66,15 +70,29 @@ router.post('/login', async (req, res) => {
     }
 });
 
-// router.get('/:id', withAuth, async (req, res) => {
-//     try {
-//         const userData = await User.findByPk(req.params.id, {
-//             where: {
-//                 id: req.params.id
-//             }
-//         })
-//     }
-// })
+router.get('/:id', async (req, res) => {
+    try {
+        const userData = await User.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: [
+                {
+                    model: Game,
+                    include: {
+                        model: Continent,
+                    },
+                },
+            ],
+        })
+        if (!userData) {
+            res.status(404).json({ message: 'User not found' });
+        }
+        res.status(200).json(userData)
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 
 router.post('/logout', withAuth, (req, res) => {

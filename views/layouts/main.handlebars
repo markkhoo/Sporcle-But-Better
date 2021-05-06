@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Game</title>
+    <title>Continent Game</title>
 </head>
+
 <body>
-    <div id="wrapper">
+    <header>
         <div id="header">
             <h1>Sporco but better!</h1>
         </div>
@@ -16,15 +17,19 @@
                 <li>
                     <a href="/">Home</a>
                 </li>
+                {{#if logged_in}}
                 <li>
                     <a href="/profile">Profile</a>
-                </li>   
+                </li>
+                <li><a id="logout">Logout</a></li>
+                {{else}}
                 <li>
-                    {{#if signedin}}
-                        <a href="/login">Login</a>
-                    {{else}}
-                        <a href="/signup">Sign Up</a>
-                    {{/if}}
+                    <a href="/signup">Sign Up</a>
+                </li>
+                <li>
+                    <a href="/login">Login</a>
+                </li>
+                {{/if}}
                 </li>
             </ul>
         </div>
@@ -37,7 +42,19 @@
                 <button type="submit">Search</button>
             </div>
         </form>
-        {{{body}}}
-    </div>
+    </header>
+    <main>
+        {{{ body }}}
+    </main>
+
+    <footer>
+
+    </footer>
+
+    {{#if logged_in}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
+
 </body>
+
 </html>
