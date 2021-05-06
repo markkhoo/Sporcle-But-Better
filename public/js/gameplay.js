@@ -6,6 +6,9 @@ const capDisplay = document.getElementById("capitalContainer");
 const cList = document.getElementById("countryContainer");
 const startButton = document.getElementById("buttonGroup");
 const scoreButton = document.getElementById("endScreen");
+const currentCorrect = document.getElementById("currentCorrect");
+const pointCountries = document.getElementById("totalCountries");
+const timerDisplay = document.getElementById("timer");
 
 // Global Variables
 let randSeq = [];
@@ -16,6 +19,7 @@ let gameCapID = 0;
 let score = 0;
 let stopTime = 0;
 let currentContinent = 0;
+let totalCountries = 0;
 
 // ------ ALL FUNCTIONS ------------------------------------------
 // initialize
@@ -36,7 +40,7 @@ function mainGame(continent_id) {
         .then(data => {
 
             // Start Game
-            onStartGame();
+            onStartGame(data);
             currentContinent = continent_id;
             renderGroup(data);
         });
@@ -56,22 +60,58 @@ function hideOnClick() {
         }),
         headers: { 'Content-Type': 'application/json' }
     })
-    .then(res => {
-        if(res.ok) {
-            console.log('Score Submitted');
-        } else {
-            alert(res.statusText);
+        .then(res => {
+            if (res.ok) {
+                console.log('Score Submitted');
+            } else {
+                alert(res.statusText);
+            };
+        });
+};
+
+// Game Timer and Display Time
+function gameTimer() {
+    let timeInterval = setInterval(function () {
+        // Stop Interval when game ends
+        if (!gameStarted) {
+            clearInterval(timeInterval);
         };
-    });
+
+        stopTime += 10;
+
+        // Display Time
+        timerDisplay.innerHTML = msToTime(stopTime);
+
+    }, 10);
+};
+
+// Milliseconds to Time
+function msToTime(s) {
+
+    // Pad to 2 or 3 digits, default is 2
+    function pad(n, z) {
+        z = z || 2;
+        return ('00' + n).slice(-z);
+    };
+
+    var ms = s % 1000;
+    s = (s - ms) / 1000;
+    var secs = s % 60;
+    s = (s - secs) / 60;
+    var mins = s % 60;
+    var hrs = (s - mins) / 60;
+
+    return pad(hrs) + ':' + pad(mins) + ':' + pad(secs) + '.' + pad(ms, 3);
 };
 
 // On Start Game Button click
-function onStartGame() {
+function onStartGame(data) {
     scoreButton.innerHTML = "";
     gameStarted = true;
     score = 0;
     stopTime = 0;
     currentContinent = 0;
+    totalCountries = data.countries.length;
     displayButton(false);
     displayEndScreen(false);
 };
@@ -170,17 +210,6 @@ function countryClicked() {
     // Render Capital after score is calculated
     capitalIndex += 1;
     renderCapital();
-};
-
-// Game Timer
-function gameTimer() {
-    let timeInterval = setInterval(function () {
-        stopTime += 10;
-        if (!gameStarted) {
-            console.log(stopTime);
-            clearInterval(timeInterval);
-        };
-    }, 10);
 };
 
 // End Screen and Submit Score
