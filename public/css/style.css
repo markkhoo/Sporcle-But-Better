@@ -4,9 +4,25 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-#wrapper {
+body {
     background-color: #000;
+}
+
+#wrapper {
+    position: relative;
     min-height: 110vh;
+}
+
+#background {
+    background: url('/images/worldmap.jpg') no-repeat;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 96px;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .4;
 }
 
 #header {
