@@ -94,6 +94,37 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+router.get('/searched/:username', withAuth, async (req, res) => {
+    try {
+        const userData = await User.findOne({
+            where: {
+                username: req.params.username,
+            },
+            include: [
+                {
+                    model: Game,
+                    include: {
+                        model: Continent,
+                    },
+                },
+            ],
+        });
+        if (!userData) {
+            res.status(400).json({ message: 'User not found!' });
+        }
+        const user = userData.get({ plain: true });
+        res.status(200).json(user);
+        // const user = userData.get({ plain: true });
+        // res.render('searchuser', {
+        //     user,
+        //     logged_in: req.session.logged_in
+        // });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
 
 router.post('/logout', withAuth, (req, res) => {
     if (req.session.logged_in) {

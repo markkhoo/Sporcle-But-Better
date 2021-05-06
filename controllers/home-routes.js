@@ -19,8 +19,8 @@ router.get('/signup', (req, res) => {
     res.render('signup');
 });
 
-router.get('/newgame/:id', withAuth, (req, res) => {
-    res.render('gamepage');
+router.get('/newgame', withAuth, (req, res) => {
+    res.render('game');
     // try {
     //     const continentData = await Continent.findOne({
     //         where: {
@@ -87,6 +87,8 @@ router.get('/profile/:username', withAuth, async (req, res) => {
         if (!userData) {
             alert('User not found!');
         }
+        // const user = userData.get({ plain: true });
+        // res.status(200).json(user);
         const user = userData.get({ plain: true });
         res.render('searchuser', {
             user,
