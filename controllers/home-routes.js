@@ -87,6 +87,8 @@ router.get('/profile/:username', withAuth, async (req, res) => {
         if (!userData) {
             alert('User not found!');
         }
+        // const user = userData.get({ plain: true });
+        // res.status(200).json(user);
         const user = userData.get({ plain: true });
         res.render('searchuser', {
             user,
