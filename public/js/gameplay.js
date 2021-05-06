@@ -9,6 +9,7 @@ const scoreButton = document.getElementById("endScreen");
 const currentCorrect = document.getElementById("currentCorrect");
 const pointCountries = document.getElementById("totalCountries");
 const timerDisplay = document.getElementById("timer");
+const displayContinent = document.getElementById("displayContinent");
 
 // Global Variables
 let randSeq = [];
@@ -85,25 +86,6 @@ function gameTimer() {
     }, 10);
 };
 
-// Milliseconds to Time
-function msToTime(s) {
-
-    // Pad to 2 or 3 digits, default is 2
-    function pad(n, z) {
-        z = z || 2;
-        return ('00' + n).slice(-z);
-    };
-
-    var ms = s % 1000;
-    s = (s - ms) / 1000;
-    var secs = s % 60;
-    s = (s - secs) / 60;
-    var mins = s % 60;
-    var hrs = (s - mins) / 60;
-
-    return pad(hrs) + ':' + pad(mins) + ':' + pad(secs) + '.' + pad(ms, 3);
-};
-
 // On Start Game Button click
 function onStartGame(data) {
     scoreButton.innerHTML = "";
@@ -112,6 +94,7 @@ function onStartGame(data) {
     stopTime = 0;
     currentContinent = 0;
     totalCountries = data.countries.length;
+    renderScore();
     displayButton(false);
     displayEndScreen(false);
 };
@@ -185,6 +168,7 @@ function renderCapital() {
 
 // Render Countries
 function renderCountries(data) {
+    displayContinent.innerHTML = continentName(data.id);
     // Create List Elements
     for (let i = 0; i < data.countries.length; i++) {
         let li = document.createElement("li");
@@ -202,14 +186,18 @@ function countryClicked() {
 
     if (countryID === gameCapID) {
         score += 1;
-        console.log(score);
-    } else {
-        console.log(score);
     };
+    renderScore();
 
     // Render Capital after score is calculated
     capitalIndex += 1;
     renderCapital();
+};
+
+// Display Countries Correct over Total Countries
+function renderScore() {
+    currentCorrect.innerHTML = score;
+    pointCountries.innerHTML = totalCountries;
 };
 
 // End Screen and Submit Score
@@ -221,6 +209,46 @@ function gameEnd() {
     scoreButton.appendChild(final);
 
     displayEndScreen(true);
+};
+
+// Milliseconds to Time
+function msToTime(s) {
+
+    // Pad to 2 or 3 digits, default is 2
+    function pad(n, z) {
+        z = z || 2;
+        return ('00' + n).slice(-z);
+    };
+
+    var ms = s % 1000;
+    s = (s - ms) / 1000;
+    var secs = s % 60;
+    s = (s - secs) / 60;
+    var mins = s % 60;
+    var hrs = (s - mins) / 60;
+
+    return pad(hrs) + ':' + pad(mins) + ':' + pad(secs) + '.' + pad(ms, 3);
+};
+
+// Choose Continent Name
+function continentName(id) {
+    if(id == 1) {
+        return "Africa"
+    } else if (id == 2) {
+        return "Asia"
+    } else if (id == 3) {
+        return "Australia/Oceania"
+    } else if (id == 4) {
+        return "Europe"
+    } else if (id == 5) {
+        return "North America"
+    } else if (id == 6) {
+        return "South America"
+    } else if (id == 7) {
+        return "Antarctica"
+    } else {
+        return "Continent"
+    };
 };
 
 // ------ ALL LISTENERS ------------------------------------------
@@ -255,10 +283,10 @@ document.getElementById("gameSA").addEventListener("click", function (event) {
     mainGame(6);
 });
 
-// document.getElementById("gameAN").addEventListener("click", function (event) {
-//     event.preventDefault();
-//     mainGame(7);
-// });
+document.getElementById("gameAN").addEventListener("click", function (event) {
+    event.preventDefault();
+    mainGame(7);
+});
 
 
 
