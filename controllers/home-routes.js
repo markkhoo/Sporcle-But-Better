@@ -14,28 +14,29 @@ router.get('/signup', (req, res) => {
     res.render('/signup');
 });
 
-router.get('/newgame/:id', withAuth, async (req, res) => {
-    try {
-        const continentData = await Continent.findOne({
-            where: {
-               id: req.params.id
-            },
-            include: [
-                {
-                    model: Countries
-                },
-            ],
-        });
-        const continent = continentData.get({ plain: true });
-        res.render('/gamepage', {
-            continent,
-            logged_in: req.session.logged_in
-        });
-        res.status(200).json(continent);
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
+router.get('/newgame/:id', withAuth, (req, res) => {
+    res.render('/gamepage');
+    // try {
+    //     const continentData = await Continent.findOne({
+    //         where: {
+    //            id: req.params.id
+    //         },
+    //         include: [
+    //             {
+    //                 model: Countries
+    //             },
+    //         ],
+    //     });
+    //     const continent = continentData.get({ plain: true });
+    //     res.render('/gamepage', {
+    //         continent,
+    //         logged_in: req.session.logged_in
+    //     });
+    //     res.status(200).json(continent);
+    // } catch (err) {
+    //     console.log(err);
+    //     res.status(500).json(err);
+    // }
 });
 
 router.get('/profile', withAuth, async (req, res) => {
