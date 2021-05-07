@@ -1,44 +1,46 @@
-<div>
-    <h1>Welcome to {{user.username}}'s profile!</h1>
-</div>
+<div id="profile"> 
+    <div id="userProf">
+        <h1>Welcome to {{user.username}}'s profile!</h1>
+    </div>
 
-<div>
-    <h2>Top Scores</h2>
-    {{#each Games }}
-    {{!-- <h3>North America</h3> --}}
-    {{!-- {{#ifEquals Continent.name value='North America'}}
-    <p>{{score}}</p> --}}
-    {{!-- {{/ifEquals}} --}}
-    <h3>{{Continent.name}}</h3>
-    <p>{{score}}</p>
-    {{!-- <h3>South America</h3>
-     {{#if Continent.name == 'South America'}}
-    <p>{{score}}</p>
-    {{/if}}
-    <h3>Europe</h3>
-     {{#if Continent.name == 'Europe'}}
-    <p>{{score}}</p>
-    {{/if}}
-    <h3>Africa</h3>
-     {{#if Continent.name == 'Africa'}}
-    <p>{{score}}</p>
-    {{/if}}
-    <h3>Asia</h3>
-     {{#if Continent.name == 'Asia'}}
-    <p>{{score}}</p>
-    {{/if}}
-    <h3>Australia and Oceania</h3>
-    {{#if Continent.name == 'Australia and Oceania'}}
-    <p>{{score}}</p>
-    {{/if}} --}}
-    {{/each}}
-</div>
+    <div id="topScores">
+        <h2>Top Scores</h2>
+        {{#each Games }}
+        {{!-- <h3>North America</h3> --}}
+        {{!-- {{#ifEquals Continent.name value='North America'}}
+        <p>{{score}}</p> --}}
+        {{!-- {{/ifEquals}} --}}
+        <h3>{{Continent.name}}</h3>
+        <p>{{score}}</p>
+        {{!-- <h3>South America</h3>
+        {{#if Continent.name == 'South America'}}
+        <p>{{score}}</p>
+        {{/if}}
+        <h3>Europe</h3>
+        {{#if Continent.name == 'Europe'}}
+        <p>{{score}}</p>
+        {{/if}}
+        <h3>Africa</h3>
+        {{#if Continent.name == 'Africa'}}
+        <p>{{score}}</p>
+        {{/if}}
+        <h3>Asia</h3>
+        {{#if Continent.name == 'Asia'}}
+        <p>{{score}}</p>
+        {{/if}}
+        <h3>Australia and Oceania</h3>
+        {{#if Continent.name == 'Australia and Oceania'}}
+        <p>{{score}}</p>
+        {{/if}} --}}
+        {{/each}}
+    </div>
 
-<div>
-    <h2>Recent Games</h2>
-        <ul class="recents">
-        {{!-- Write script to generate the last 5 scores --}}
-        </ul>
+    <div id="recentGames">
+        <h2>Recent Games</h2>
+            <ul class="recents">
+            {{!-- Write script to generate the last 5 scores --}}
+            </ul>
 
+    </div>
 </div>
 <script src="/js/profile.js"></script>
