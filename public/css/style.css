@@ -228,14 +228,11 @@ body {
 
 #profile #userProfile #topScores {
     width: 30%;
+    text-align: center;
 }
 
 #profile #userProfile #chartBox {
     width: 70%;
-}
-
-#profile #userProfile #chartBox .chartBox {
-    width: 500px;
 }
 
 #profile #userProfile .spacing {
@@ -249,6 +246,24 @@ body {
     height: 100%;
     padding: 20px;
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+#profile #userProfile #topScores .spacing h2 {
+    margin-bottom: 10px;
+}
+
+#profile #userProfile #topScores .spacing p {
+    margin-bottom: 10px;
+}
+
+#profile #userProfile #chartBox .chartBox {
+    width: 500px;
+}
+
+@media screen and (min-width: 767px) {
+
 }
 
 
