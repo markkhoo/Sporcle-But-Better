@@ -80,6 +80,17 @@ function displayVisuals(user_id) {
                 timerCalc(arrAN)
             );
 
+            let timerFast = [];
+            timerFast.push(
+                bestTime(arrAF),
+                bestTime(arrAS),
+                bestTime(arrAU),
+                bestTime(arrEU),
+                bestTime(arrNA),
+                bestTime(arrSA),
+                bestTime(arrAN)
+            );
+
             // Display Chart AVERAGES--------------------------------------------------
             let nyChart2 = new Chart(chart2, {
                 type: 'bar',
@@ -204,6 +215,29 @@ function displayVisuals(user_id) {
                             'rgba(255, 206, 86, 1)'
                         ],
                         borderWidth: 1
+                    },
+                    {
+                        label: 'Fastest Time (Seconds)',
+                        data: timerFast,
+                        backgroundColor: [
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(54, 162, 235, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(54, 162, 235, 1)'
+                        ],
+                        borderWidth: 1
                     }]
                 },
                 options: {
@@ -245,6 +279,17 @@ function timerCalc(arr) {
         sum += arr[j].time;
     };
     let average = sum / arr.length;
-    let answer = Math.round(average / 1000); // Conver to seconds
+    let answer = Math.round(average / 1000); // Convert to seconds
     return answer
+};
+
+// Sort Fast Time
+function bestTime(arr) {
+    let best = 999999999;
+    for (let j = 0; j < arr.length; j++) {
+        if (arr[j].time < best) {
+            best = arr[j].time;
+        };
+    };
+    return Math.round(best / 1000); // Convert to seconds
 };
