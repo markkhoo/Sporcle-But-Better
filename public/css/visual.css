@@ -1,0 +1,16 @@
+.chartBox {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+
+    text-align: center;
+
+    padding: 1.25em;
+
+    width: 600px;
+}
+
+.chartBox > h2, .chartBox > h3 {
+    color: rgba(0, 0, 0, 0.65);
+    padding: 0 0 0.5em 0;
+}
