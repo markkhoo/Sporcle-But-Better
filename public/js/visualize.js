@@ -69,6 +69,17 @@ function displayVisuals(user_id) {
                 scoreCalc(arrAN, numAN)
             );
 
+            let scoreBest = [];
+            scoreBest.push(
+                scoreBestCalc(arrAF, numAF),
+                scoreBestCalc(arrAS, numAS),
+                scoreBestCalc(arrAU, numAU),
+                scoreBestCalc(arrEU, numEU),
+                scoreBestCalc(arrNA, numNA),
+                scoreBestCalc(arrSA, numSA),
+                scoreBestCalc(arrAN, numAN)
+            );
+
             let timerData = [];
             timerData.push(
                 timerCalc(arrAF),
@@ -164,6 +175,29 @@ function displayVisuals(user_id) {
                             'rgba(255, 99, 132, 1)',
                             'rgba(255, 99, 132, 1)',
                             'rgba(255, 99, 132, 1)'
+                        ],
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Best % Answered Correct',
+                        data: scoreBest,
+                        backgroundColor: [
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(54, 162, 235, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(54, 162, 235, 1)'
                         ],
                         borderWidth: 1
                     }]
@@ -271,6 +305,18 @@ function scoreCalc(arr, max) {
     let answer = Math.round(average / max * 10000) / 100.00; // Convert to '00.00' format
     return answer
 };
+
+// Sort Best Score
+function scoreBestCalc(arr, max) {
+    let best = 0;
+    for (let j = 0; j < arr.length; j++) {
+        if (arr[j].score > best) {
+            best = arr[j].score;
+        };
+    };
+    let answer = Math.round(best / max * 10000) / 100.00; // Convert to '00.00' format
+    return answer
+}
 
 // Average the Times
 function timerCalc(arr) {
