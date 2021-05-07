@@ -66,3 +66,17 @@
 .buttonChoice:active, .buttonTyp:active {
     transform: scale(0.98, 0.98);
 }
+
+@media screen and (max-width: 568px) {
+    .cardoo {
+        width: 450px;
+        margin: 0.25em 0;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .cardoo {
+        width: 300px;
+        margin: 0.25em 0;
+    }
+}
