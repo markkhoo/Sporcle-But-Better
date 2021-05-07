@@ -1,7 +1,8 @@
 const searchUser = async (event) => {
     event.preventDefault();
 
-    const searched = document.querySelector('#searchInput').value.trim();
+    let searched = document.querySelector('#searchInput').value;
+    searched = searched.trim();
 
     if (searched) {
         const response = await fetch(`/profile/${searched}`, {
@@ -10,7 +11,7 @@ const searchUser = async (event) => {
             body: JSON.stringify(data)
         });
         if (response.ok) {
-            document.location.replace('/searchuser');
+            console.log(response);
         } else {
             alert(response.statusText);
         }
