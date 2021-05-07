@@ -64,6 +64,7 @@ router.get('/profile', withAuth, async (req, res) => {
         const highscores = [...Object.values(highest)];
         console.log(highscores);
         res.render('profile', {
+            user,
             Games: highscores,
             logged_in: true
         });
@@ -105,7 +106,8 @@ router.get('/profile/:username', withAuth, async (req, res) => {
         }
         const highscores = [...Object.values(highest)];
         console.log(highscores);
-        res.render('profile', {
+        res.render('searchuser', {
+            user,
             Games: highscores,
             logged_in: true
         });
