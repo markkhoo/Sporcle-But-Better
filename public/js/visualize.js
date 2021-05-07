@@ -1,6 +1,7 @@
 const hideMe = document.getElementById('userID');
 const chart1 = document.getElementById('chart1');
 const chart2 = document.getElementById('chart2');
+const chart3 = document.getElementById('chart3');
 
 const getID = hideMe.getAttribute('data-ID');
 const numAF = 57;
@@ -68,6 +69,17 @@ function displayVisuals(user_id) {
                 scoreCalc(arrAN, numAN)
             );
 
+            let timerData = [];
+            timerData.push(
+                timerCalc(arrAF),
+                timerCalc(arrAS),
+                timerCalc(arrAU),
+                timerCalc(arrEU),
+                timerCalc(arrNA),
+                timerCalc(arrSA),
+                timerCalc(arrAN)
+            );
+
             // Display Chart AVERAGES--------------------------------------------------
             let nyChart2 = new Chart(chart2, {
                 type: 'bar',
@@ -116,7 +128,7 @@ function displayVisuals(user_id) {
             });
             // ------------------------------------------------------------------------
 
-            // Display Chart AVERAGES--------------------------------------------------
+            // Display SCORE AVERAGES--------------------------------------------------
             let nyChart1 = new Chart(chart1, {
                 type: 'bar',
                 data: {
@@ -164,6 +176,54 @@ function displayVisuals(user_id) {
                 }
             });
             // ------------------------------------------------------------------------
+
+            // Display TIMER AVERAGES--------------------------------------------------
+            let nyChart3 = new Chart(chart3, {
+                type: 'bar',
+                data: {
+                    labels: ['Arica', 'Asia', 'Australia', 'Europe', 'N America', 'S America', 'Antarctica'],
+                    datasets: [{
+                        label: 'Average Time (Seconds)',
+                        data: timerData,
+                        backgroundColor: [
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(255, 206, 86, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(255, 206, 86, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            min: 0,
+                            xAxes: [{
+                                stacked: true,
+                                ticks: {
+                                    callback: function (value, index, values) {
+                                        return value;
+                                    }
+                                }
+                            }],
+                        }
+                    }
+                }
+            });
+            // ------------------------------------------------------------------------
         });
 };
 
@@ -174,6 +234,17 @@ function scoreCalc(arr, max) {
         sum += arr[j].score;
     };
     let average = sum / arr.length * 1.00;
-    let answer = Math.round(average / max * 10000) / 100.00;
+    let answer = Math.round(average / max * 10000) / 100.00; // Convert to '00.00' format
+    return answer
+};
+
+// Average the Times
+function timerCalc(arr) {
+    let sum = 0;
+    for (let j = 0; j < arr.length; j++) {
+        sum += arr[j].time;
+    };
+    let average = sum / arr.length;
+    let answer = Math.round(average / 1000); // Conver to seconds
     return answer
 };
