@@ -3,9 +3,16 @@ const { User, Game, Countries, Continent } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', (req, res) => {
-    res.render('homepage');
-})
-
+    if (req.session.logged_in) {
+        res.render('homepage', {
+            logged_in: true
+        });
+    } else {
+        res.render('homepage', {
+            logged_in: false
+        });
+    };
+});
 
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
@@ -20,7 +27,9 @@ router.get('/signup', (req, res) => {
 });
 
 router.get('/newgame', withAuth, (req, res) => {
-    res.render('game');
+    res.render('game', {
+        logged_in: true
+    });
 });
 
 router.get('/profile', withAuth, async (req, res) => {
