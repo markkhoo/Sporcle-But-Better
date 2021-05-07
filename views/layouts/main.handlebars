@@ -21,25 +21,31 @@
             </div>
             <div id="navigation">
                 <div class="spacing">
+                    {{#if logged_in}}
                     <ul>
                         <li>
                             <a href="/">Home</a>
                         </li>
-                        {{#if logged_in}}
                         <li>
                             <a href="/profile">Profile</a>
                         </li>
-                        <li><a id="logout">Logout</a></li>
-                        {{else}}
+                        <li>
+                            <a id="logout">Logout</a>
+                        </li>
+                    </ul>
+                    {{else}}
+                    <ul>
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
                         <li>
                             <a href="/signup">Sign Up</a>
                         </li>
                         <li>
                             <a href="/login">Login</a>
                         </li>
-                        {{/if}}
-                        </li>
                     </ul>
+                    {{/if}}
                 </div>
             </div>
             <div id="form">
@@ -58,6 +64,10 @@
         </div>
         {{{ body }}}
     </div>
+
+    {{#if logged_in}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
 </body>
 
 </html>
