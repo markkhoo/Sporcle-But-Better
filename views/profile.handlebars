@@ -2,7 +2,7 @@
 
 <div id="profile">
     <div id="userProf">
-        <h1>Welcome to {{user.username}}'s profile!</h1>
+        <h1>Welcome to {{cap_first_letter user.username}}'s profile!</h1>
     </div>
     <div id="userProfile">
         <div id="topScores">
@@ -42,7 +42,8 @@
 
 --}}
 
-<div id="userID" data-ID="{{user.id}}"></div>
 {{!-- Visualization and Chart.js --}}
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="/js/visualize.js"></script>
+<div id="userID" data-ID="{{user.id}}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/visualize.js"></script>
+</div>

@@ -26,7 +26,9 @@ module.exports = {
 
         return pad(hrs) + ':' + pad(mins) + ':' + pad(secs) + '.' + pad(ms, 3);
     },
-
+    cap_first_letter: (string) => {
+        return string.charAt(0).toUpperCase() + string.slice(1)
+    }
 };
 
 
