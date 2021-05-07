@@ -1,22 +1,24 @@
 <link rel="stylesheet" href="css/visual.css">
 
-<div>
-    <h1>Welcome to {{user.username}}'s profile!</h1>
-</div>
+<div id="profile"> 
+    <div id="userProf">
+        <h1>Welcome to {{user.username}}'s profile!</h1>
+    </div>
 
-<div>
-    <h2>Top Scores</h2>
-    {{#each Games }}
+    <div id="topScores">
+        <h2>Top Scores</h2>
+        {{#each Games }}
 
-    <h3>{{Continent.name}}</h3>
-    <p>{{score}}/{{format_country_num Continent.id}}</p>
+        <h3>{{Continent.name}}</h3>
+        <p>{{score}}/{{format_country_num Continent.id}}</p>
 
-    {{/each}}
-</div>
+        {{/each}}
+    </div>
 
-<div class="chartBox">
-    <h3>Average Questions Correct per Continent</h3>
-    <canvas id="chart1"></canvas>
+    <div class="chartBox">
+        <h3>Average Questions Correct per Continent</h3>
+        <canvas id="chart1"></canvas>
+    </div>
 </div>
 
 {{!-- 
