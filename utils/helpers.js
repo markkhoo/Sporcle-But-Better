@@ -1,6 +1,6 @@
 module.exports = {
     format_country_num: (id) => {
-        switch(id){
+        switch (id) {
             case 1: return 57;
             case 2: return 44;
             case 3: return 27;
@@ -10,7 +10,25 @@ module.exports = {
             case 7: return 2;
         }
     },
-    
+    format_best_time: (s) => {
+        // Pad to 2 or 3 digits, default is 2
+        function pad(n, z) {
+            z = z || 2;
+            return ('00' + n).slice(-z);
+        };
+
+        var ms = s % 1000;
+        s = (s - ms) / 1000;
+        var secs = s % 60;
+        s = (s - secs) / 60;
+        var mins = s % 60;
+        var hrs = (s - mins) / 60;
+
+        return pad(hrs) + ':' + pad(mins) + ':' + pad(secs) + '.' + pad(ms, 3);
+    },
+    cap_first_letter: (string) => {
+        return string.charAt(0).toUpperCase() + string.slice(1)
+    }
 };
 
 
