@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="css/visual.css">
 
-<div id="profile"> 
+<div id="profile">
     <div id="userProf">
         <h1>Welcome to {{user.username}}'s profile!</h1>
     </div>
@@ -19,6 +19,10 @@
         <div id="chartBox">
             <div class="spacing">
                 <div class="chartBox">
+                    <h3>Total Games Played</h3>
+                    <canvas id="chart2"></canvas>
+                </div>
+                <div class="chartBox">
                     <h3>Average Questions Correct per Continent</h3>
                     <canvas id="chart1"></canvas>
                 </div>
@@ -27,7 +31,7 @@
     </div>
 </div>
 
-{{!-- 
+{{!--
 
 <script src="/js/profile.js"></script>
 
