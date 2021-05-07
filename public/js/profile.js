@@ -1,17 +1,17 @@
 const searchUser = async (event) => {
     event.preventDefault();
 
-    let searched = document.querySelector('#searchInput').value;
+    let username = document.querySelector('#searchInput').value;
     searched = searched.trim();
 
-    if (searched) {
-        const response = await fetch(`/profile/${searched}`, {
+    if (username) {
+        const response = await fetch(`/profile/${username}`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify(data)
         });
         if (response.ok) {
-            console.log(response);
+            document.location.redirect(response);
         } else {
             alert(response.statusText);
         }

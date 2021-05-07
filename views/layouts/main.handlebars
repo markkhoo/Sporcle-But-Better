@@ -50,10 +50,10 @@
             </div>
             <div id="form">
                 <div class="spacing">
-                    <form>
+                    <form id="find-form">
                         <div id="searchArea">
                             <label>Search:</label>
-                            <input type="text" name="search" />
+                            <input id="searchInput" type="text" name="search" />
                         </div>
                         <div id="searchBtn">
                             <button type="submit">Search</button>
@@ -68,6 +68,7 @@
     {{#if logged_in}}
     <script src="/js/logout.js"></script>
     {{/if}}
+    <script src="/js/main.js"></script>
 </body>
 
 </html>

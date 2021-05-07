@@ -1,20 +1,22 @@
+const searchUser = async (event) => {
+    event.preventDefault();
 
-const username = document.querySelector('#searchInput').value;
+    let username = document.querySelector('#searchInput').value;
+    searched = searched.trim();
 
-const renderProfile = (stuff) => {
-    console.log(stuff);
+    if (username) {
+        const response = await fetch(`/profile/${username}`, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        });
+        if (response.ok) {
+            document.location.redirect(response);
+        } else {
+            alert(response.statusText);
+        }
+    }
 };
 
-
-function getUser(username) {
-    fetch(`/profile/${username}`, { "method": "GET"})
-    .then(response => {
-        return response.json();
-    })
-    .then(data => {
-        renderProfile(data);
-    })
-};
-
-document.querySelector('.find-form').addEventListener('submit', getUser);
+document.querySelector('#find-form').addEventListener('submit', searchUser);
 
