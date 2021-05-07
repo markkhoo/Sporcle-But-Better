@@ -9,15 +9,16 @@ router.get('/', async (req, res) => {
             attributes: {
                 exclude: ['password'],
             },
-            include: {
+            include: [{
                 model: Game,
-                order: [
-                    [sequelize.fn('max', sequelize.col('score')), 'DESC'],
-                ],
                     include: {
                     model: Continent,
                 },
-            },
+            }],
+            order: [
+                [{model: Game}, 'score', 'DESC'],
+                [{model: Game}, 'time', 'ASC'],
+            ]
         })
         res.status(200).json(userData);
     } catch (err) {

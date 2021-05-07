@@ -44,11 +44,27 @@ router.get('/profile', withAuth, async (req, res) => {
                     },
                 },
             ],
+            order: [
+                [{model: Game}, 'score', 'DESC'],
+                [{model: Game}, 'time', 'ASC'],
+            ]
         });
         const user = userData.get({ plain: true });
-
+        const highest = {}
+        for(let i = 0; i < user.Games.length; i++) {
+            let game = user.Games[i];
+            if(!highest[game.Continent.name]) {
+                highest[game.Continent.name] = game;
+            } else {
+                if (highest[game.Continent.name].score < game.score) {
+                    highest[game.Continent.name] = game;
+                };
+            }
+        }
+        const highscores = [...Object.values(highest)];
+        console.log(highscores);
         res.render('profile', {
-            ...user,
+            Games: highscores,
             logged_in: true
         });
     } catch (err) {
@@ -75,12 +91,23 @@ router.get('/profile/:username', withAuth, async (req, res) => {
         if (!userData) {
             alert('User not found!');
         }
-        // const user = userData.get({ plain: true });
-        // res.status(200).json(user);
         const user = userData.get({ plain: true });
-        res.render('searchuser', {
-            user,
-            logged_in: req.session.logged_in
+        const highest = {}
+        for(let i = 0; i < user.Games.length; i++) {
+            let game = user.Games[i];
+            if(!highest[game.Continent.name]) {
+                highest[game.Continent.name] = game;
+            } else {
+                if (highest[game.Continent.name].score < game.score) {
+                    highest[game.Continent.name] = game;
+                };
+            }
+        }
+        const highscores = [...Object.values(highest)];
+        console.log(highscores);
+        res.render('profile', {
+            Games: highscores,
+            logged_in: true
         });
     } catch (err) {
         res.status(500).json(err);
