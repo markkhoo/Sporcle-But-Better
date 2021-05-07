@@ -4,20 +4,26 @@
     <div id="userProf">
         <h1>Welcome to {{user.username}}'s profile!</h1>
     </div>
+    <div id="userProfile">
+        <div id="topScores">
+            <div class="spacing">
+                <h2>Top Scores</h2>
+                {{#each Games }}
 
-    <div id="topScores">
-        <h2>Top Scores</h2>
-        {{#each Games }}
+                <h3>{{Continent.name}}</h3>
+                <p>{{score}}/{{format_country_num Continent.id}}</p>
 
-        <h3>{{Continent.name}}</h3>
-        <p>{{score}}/{{format_country_num Continent.id}}</p>
-
-        {{/each}}
-    </div>
-
-    <div class="chartBox">
-        <h3>Average Questions Correct per Continent</h3>
-        <canvas id="chart1"></canvas>
+                {{/each}}
+            </div>
+        </div>
+        <div id="chartBox">
+            <div class="spacing">
+                <div class="chartBox">
+                    <h3>Average Questions Correct per Continent</h3>
+                    <canvas id="chart1"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
