@@ -1,0 +1,68 @@
+:root {
+    --gameButtonColour: rgb(253, 239, 112);
+}
+
+/* Style for Containers */
+#allGameContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+
+    user-select: none;
+}
+
+.cardoo {
+    background-color: rgba(124, 200, 245, 0.76);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 1em;
+    margin: 0.5em;
+
+    border-radius: 1em;
+
+    width: 600px;
+}
+
+#buttonGroup > h2, #countryGroup > h2 {
+    padding: 0 0 0.25em 0;
+} 
+
+/* Rest of styling */
+.buttonChoice {
+    background-color: var(--gameButtonColour);
+    list-style-type: none;
+    border-radius: 1em;
+
+    padding: 0.5em 1.5em;
+    margin: 0.25em;
+
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+.buttonTyp {
+    background-color: var(--gameButtonColour);
+    border-style: none;
+    border-radius: 2em;
+
+    padding: 0.75em 2.25em;
+    margin: 0.25em;
+
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+.buttonChoice:hover, .buttonTyp:hover {
+    background-color: rgba(255, 230, 0, 0.856);
+    transition: background-color 120ms linear;
+    cursor: pointer;
+}
+
+.buttonChoice:active, .buttonTyp:active {
+    transform: scale(0.98, 0.98);
+}
