@@ -12,6 +12,7 @@ const timerDisplay = document.getElementById("timer");
 const displayContinent = document.getElementById("displayContinent");
 const countryGroup = document.getElementById("countryGroup");
 const capitalGroup = document.getElementById("capitalGroup");
+const scoreDisplay = document.getElementById("scoreDisplay");
 
 // Global Variables
 let randSeq = [];
@@ -32,6 +33,7 @@ function init() {
     displayButton(true);
     displayEndScreen(false);
     displayGame(false);
+    displayScore(false);
 };
 
 // Main Game Function
@@ -101,6 +103,7 @@ function onStartGame(data) {
     displayButton(false);
     displayEndScreen(false);
     displayGame(true);
+    displayScore(true);
 };
 
 // Show and Hide Start Button
@@ -125,10 +128,19 @@ function displayEndScreen(displayed) {
 function displayGame(displayed) {
     if (displayed === true) {
         countryGroup.style.setProperty('display', 'initial');
-        capitalGroup.style.setProperty('display', 'initial');
+        capitalGroup.style.setProperty('display', 'flex');
     } else if (displayed === false) {
         countryGroup.style.setProperty('display', 'none');
         capitalGroup.style.setProperty('display', 'none');
+    };
+};
+
+// Show and Hide Score Display
+function displayScore(displayed) {
+    if (displayed === true) {
+        scoreDisplay.style.setProperty('display', 'flex');
+    } else if (displayed === false) {
+        scoreDisplay.style.setProperty('display', 'none');
     };
 };
 
@@ -188,7 +200,7 @@ function renderCountries(data) {
     for (let i = 0; i < data.countries.length; i++) {
         let li = document.createElement("li");
         li.textContent = data.countries[i].name;
-        li.setAttribute("class", "countryButton");
+        li.setAttribute("class", "buttonChoice");
         li.setAttribute("data-id", data.countries[i].id);
         li.onclick = countryClicked;
         cList.appendChild(li);
@@ -220,6 +232,7 @@ function gameEnd() {
     let final = document.createElement("button");
     final.innerHTML = "Submit Score"
     final.setAttribute("type", "button");
+    final.setAttribute("class", "buttonTyp");
     final.onclick = hideOnClick; // <== Score gets submitted here!
     scoreButton.appendChild(final);
 
@@ -303,58 +316,3 @@ document.getElementById("gameAN").addEventListener("click", function (event) {
     event.preventDefault();
     mainGame(7);
 });
-
-
-
-
-
-
-
-// ------ CODEPEN ------------------------------------------------
-// const testObject = {
-//     id: 7,
-//     name: "Antarctica",
-//     countries: [
-//         {
-//             id: 2,
-//             name: "South Georgia and South Sandwich Islands",
-//             capital: "King Edward Point",
-//             continent_id: 7
-//         },
-//         {
-//             id: 3,
-//             name: "French Southern and Antarctic Lands",
-//             capital: "Port-aux-Français",
-//             continent_id: 7
-//         }
-//     ]
-// };
-
-// // Test Game Start
-// document.getElementById("game-7").addEventListener("click", function (event) {
-//     event.preventDefault();
-//     onStartGame();
-//     renderGroup(testObject);
-// });
-
-// ------ Codepen Code based on this HTML ---------------------------------
-// `
-// <body>
-//   <div id="buttonGroup">
-//     <button type="button" id="game-7">start</button>
-//   </div>
-//   <div id="endScreen">
-// <!--     <button type="button" id="highscore">Submit Score</button> -->
-//   </div>
-//   <div class="countries">
-//     <h1>Antarctica</h1>
-//     <ul id="countryContainer">
-//     </ul>
-//   </div>
-//   <div class="capital">
-//     <h3>Capital:</h3>
-//     <div id="capitalContainer">
-//     </div>
-//   </div>
-// </body>
-// `

@@ -1,56 +1,38 @@
-{{!-- <div>
-    <h2>Countries of {{{Continent}}}</h2>
-    <button type="submit">{{{Countries}}}</button>
-</div> --}}
+<link rel="stylesheet" href="css/gameplay.css">
 
-{{!-- <div>
-    <h2>This city is the capital of which country?</h2>
-    {{{Capital}}}
-</div> --}}
+<div id="allGameContainer">
 
-<div id="buttonGroup">
-    <div>
+    <div class="cardoo" id="buttonGroup">
         <h2>Choose your Continent:</h2>
+        <button class="buttonTyp" id="gameNA" type="button">North America</button>
+        <button class="buttonTyp" id="gameSA" type="button">South America</button>
+        <button class="buttonTyp" id="gameEU" type="button">Europe</button>
+        <button class="buttonTyp" id="gameAF" type="button">Africa</button>
+        <button class="buttonTyp" id="gameAS" type="button">Asia</button>
+        <button class="buttonTyp" id="gameAU" type="button">Australia/Oceania</button>
+        <button class="buttonTyp" id="gameAN" type="button">Antarctica</button>
     </div>
-    <div>
-        <button id="gameNA" type="button">North America</button>
-    </div>
-    <div>
-        <button id="gameSA" type="button">South America</button>
-    </div>
-    <div>
-        <button id="gameEU" type="button">Europe</button>
-    </div>
-    <div>
-        <button id="gameAF" type="button">Africa</button>
-    </div>
-    <div>
-        <button id="gameAS" type="button">Asia</button>
-    </div>
-    <div>
-        <button id="gameAU" type="button">Australia/Oceania</button>
-    </div>
-    <div>
-        <button id="gameAN" type="button">Antarctica</button>
-    </div>
-</div>
 
-<div id="scoreDisplay">
-    <h2>Correct: <span id="currentCorrect"></span>/<span id="totalCountries"></span> </h2>
-    <h2><span id="timer"></span></h2>
-</div>
-<div id="endScreen">
-</div>
-
-<div class="countries" id="countryGroup">
-    <h2><span id="displayContinent">Continent</span></h2>
-    <ul id="countryContainer">
-    </ul>
-</div>
-<div class="capital" id="capitalGroup">
-    <h2>Capital:</h2>
-    <div id="capitalContainer">
+    <div class="cardoo" id="scoreDisplay">
+        <h2>Correct: <span id="currentCorrect"></span>/<span id="totalCountries"></span> </h2>
+        <h2><span id="timer"></span></h2>
     </div>
+
+    <div id="endScreen">
+    </div>
+
+    <div class="cardoo" id="capitalGroup">
+        <h2>Capital:</h2>
+        <div id="capitalContainer">
+        </div>
+    </div>
+
+    <div class="cardoo" id="countryGroup">
+        <h2><span id="displayContinent">Continent</span></h2>
+        <ul id="countryContainer">
+        </ul>
+    </div>
+
 </div>
 
 <script src="/js/gameplay.js"></script>
