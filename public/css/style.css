@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Anton', sans-serif;
 }
 
 body {
@@ -14,7 +14,7 @@ body {
 }
 
 #background {
-    background: url('/images/worldmap.jpg') no-repeat;
+    background: url('/images/worldphoto.jpg') no-repeat;
     background-size: cover;
     position: absolute;
     left: 0;
@@ -44,8 +44,10 @@ body {
 }
 
 #header #title h1 {
-    font-family: 'Permanent Marker', cursive;
-    font-size: 25px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 15px;
 }
 
 #header #navigation ul {
@@ -55,6 +57,7 @@ body {
 
 #header #navigation ul li {
     list-style: none;
+    text-align: center;
 }
 
 #header #navigation ul li a {
@@ -114,8 +117,17 @@ body {
     margin-left: 30px;
 }
 
-#content .map {
-    width: 100%;
+#content #contentBtn button {
+    border: 1px solid #ccc;
+    padding: 6px 15px;
+    margin: 10px 0;
+    width: 100px;
+    cursor: pointer;
+}
+
+#content #contentBtn button a {
+    color: #000;
+    text-decoration: none;
 }
 
 #login {
