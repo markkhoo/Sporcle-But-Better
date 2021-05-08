@@ -45,6 +45,18 @@
     letter-spacing: 0.1em;
 }
 
+.buttonChosen {
+    background-color: rgba(128, 128, 128, 0.753);
+    list-style-type: none;
+    border-radius: 1em;
+
+    padding: 0.5em 1.5em;
+    margin: 0.25em;
+
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
 .buttonTyp {
     background-color: var(--gameButtonColour);
     border-style: none;
