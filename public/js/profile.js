@@ -1,21 +1,21 @@
-const searchUser = async (event) => {
-    event.preventDefault();
+// const searchUser = async (event) => {
+//     event.preventDefault();
 
-    let username = document.querySelector('#searchInput').value;
-    searched = searched.trim();
+//     let username = document.querySelector('#searchInput').value;
+//     searched = searched.trim();
 
-    if (username) {
-        const response = await fetch(`/profile/${username}`, {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json'},
-            body: JSON.stringify(data)
-        });
-        if (response.ok) {
-            document.location.redirect(response);
-        } else {
-            alert(response.statusText);
-        }
-    }
-};
+//     if (username) {
+//         const response = await fetch(`/profile/${username}`, {
+//             method: 'GET',
+//             headers: { 'Content-Type': 'application/json'},
+//             body: JSON.stringify(data)
+//         });
+//         if (response.ok) {
+//             document.location.redirect(response);
+//         } else {
+//             alert(response.statusText);
+//         }
+//     }
+// };
 
-document.querySelector('.find-form').addEventListener('submit', searchUser);
+// document.querySelector('.find-form').addEventListener('submit', searchUser);
