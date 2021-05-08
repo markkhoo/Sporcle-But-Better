@@ -69,6 +69,17 @@ function displayVisuals(user_id) {
                 scoreCalc(arrAN, numAN)
             );
 
+            let scoreBest = [];
+            scoreBest.push(
+                scoreBestCalc(arrAF, numAF),
+                scoreBestCalc(arrAS, numAS),
+                scoreBestCalc(arrAU, numAU),
+                scoreBestCalc(arrEU, numEU),
+                scoreBestCalc(arrNA, numNA),
+                scoreBestCalc(arrSA, numSA),
+                scoreBestCalc(arrAN, numAN)
+            );
+
             let timerData = [];
             timerData.push(
                 timerCalc(arrAF),
@@ -78,6 +89,17 @@ function displayVisuals(user_id) {
                 timerCalc(arrNA),
                 timerCalc(arrSA),
                 timerCalc(arrAN)
+            );
+
+            let timerFast = [];
+            timerFast.push(
+                bestTime(arrAF),
+                bestTime(arrAS),
+                bestTime(arrAU),
+                bestTime(arrEU),
+                bestTime(arrNA),
+                bestTime(arrSA),
+                bestTime(arrAN)
             );
 
             // Display Chart AVERAGES--------------------------------------------------
@@ -155,6 +177,29 @@ function displayVisuals(user_id) {
                             'rgba(255, 99, 132, 1)'
                         ],
                         borderWidth: 1
+                    },
+                    {
+                        label: 'Best % Answered Correct',
+                        data: scoreBest,
+                        backgroundColor: [
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(54, 162, 235, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(54, 162, 235, 1)'
+                        ],
+                        borderWidth: 1
                     }]
                 },
                 options: {
@@ -204,6 +249,29 @@ function displayVisuals(user_id) {
                             'rgba(255, 206, 86, 1)'
                         ],
                         borderWidth: 1
+                    },
+                    {
+                        label: 'Fastest Time (Seconds)',
+                        data: timerFast,
+                        backgroundColor: [
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(54, 162, 235, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(54, 162, 235, 1)'
+                        ],
+                        borderWidth: 1
                     }]
                 },
                 options: {
@@ -238,6 +306,18 @@ function scoreCalc(arr, max) {
     return answer
 };
 
+// Sort Best Score
+function scoreBestCalc(arr, max) {
+    let best = 0;
+    for (let j = 0; j < arr.length; j++) {
+        if (arr[j].score > best) {
+            best = arr[j].score;
+        };
+    };
+    let answer = Math.round(best / max * 10000) / 100.00; // Convert to '00.00' format
+    return answer
+}
+
 // Average the Times
 function timerCalc(arr) {
     let sum = 0;
@@ -245,6 +325,17 @@ function timerCalc(arr) {
         sum += arr[j].time;
     };
     let average = sum / arr.length;
-    let answer = Math.round(average / 1000); // Conver to seconds
+    let answer = Math.round(average / 1000); // Convert to seconds
     return answer
+};
+
+// Sort Fast Time
+function bestTime(arr) {
+    let best = 999999999;
+    for (let j = 0; j < arr.length; j++) {
+        if (arr[j].time < best) {
+            best = arr[j].time;
+        };
+    };
+    return Math.round(best / 1000); // Convert to seconds
 };
