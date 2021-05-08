@@ -202,6 +202,7 @@ function renderCountries(data) {
         li.textContent = data.countries[i].name;
         li.setAttribute("class", "buttonChoice");
         li.setAttribute("data-id", data.countries[i].id);
+        li.setAttribute("id", data.countries[i].id);
         li.onclick = countryClicked;
         cList.appendChild(li);
     };
@@ -215,7 +216,11 @@ function countryClicked() {
         score += 1;
     };
     renderScore();
-
+    
+    // Disables Choice after Capital is Chosen
+    document.getElementById(gameCapID).setAttribute("class", "buttonChosen");
+    document.getElementById(gameCapID).onclick = () => {};
+    
     // Render Capital after score is calculated
     capitalIndex += 1;
     renderCapital();
