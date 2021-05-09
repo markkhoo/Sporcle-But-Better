@@ -96,7 +96,6 @@ router.get('/search', async (req, res) => {
                 },
             ],
         });
-
         const user = userData.get({ plain: true });
         const highest = {}
         for(let i = 0; i < user.Games.length; i++) {
