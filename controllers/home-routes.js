@@ -62,7 +62,6 @@ router.get('/profile', withAuth, async (req, res) => {
             }
         }
         const highscores = [...Object.values(highest)];
-        console.log(highscores);
         res.render('profile', {
             user: user,
             Games: highscores,
@@ -75,6 +74,13 @@ router.get('/profile', withAuth, async (req, res) => {
 });
 
 router.get('/search', async (req, res) => {
+    
+    // Determines if logged in at time of get
+    let checkLogin = false;
+    if (req.session.logged_in){
+        checkLogin = true;
+    };
+    
     try {
         const userData = await User.findOne({
             where: {
@@ -90,9 +96,7 @@ router.get('/search', async (req, res) => {
                 },
             ],
         });
-        if (!userData) {
-            alert('User not found!');
-        }
+
         const user = userData.get({ plain: true });
         const highest = {}
         for(let i = 0; i < user.Games.length; i++) {
@@ -104,17 +108,19 @@ router.get('/search', async (req, res) => {
                     highest[game.Continent.name] = game;
                 };
             }
-        }
+        };
         const highscores = [...Object.values(highest)];
-        console.log(user);
-        console.log(highscores);
         res.render('profile', {
             user: user,
             Games: highscores,
+            logged_in: checkLogin
         });
     } catch (err) {
-        res.status(500).json(err);
-    }
+        res.render('nouser', {
+            nulluser: req.query.username,
+            logged_in: checkLogin
+        });
+    };
 });
 
 module.exports = router;
