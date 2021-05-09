@@ -6,20 +6,50 @@ const signUpUser = async (event) => {
     const passCheck = document.querySelector('#passCheck').value.trim();
 
     if (username && password === passCheck) {
-        const response = await fetch('/api/user', {
+  
+        fetch('/api/user', {
             method: 'POST',
             body: JSON.stringify({
                 username,
                 password,
             }),
             headers: { "Content-Type": "application/json" },
-        });
-        if (response.ok) {
-            document.location.replace('/profile');
-        } else {
-            alert(response.statusText);
-        }
-    }
+        })
+        .then(response => {
+            console.log(response);
+
+            if (response.ok) {
+                document.location.replace('/profile');
+            };
+
+            return response.json();
+        })
+        .then(data => {
+            if (data == "user.username must be unique"){
+                alert("Username taken. Try another username.")
+            } else if (data == "Validation len on password failed") {
+                alert("Password must at least 8 characters.")
+            };
+            console.log(data);
+
+        })
+
+        // const response = await fetch('/api/user', {
+        //     method: 'POST',
+        //     body: JSON.stringify({
+        //         username,
+        //         password,
+        //     }),
+        //     headers: { "Content-Type": "application/json" },
+        // });
+        // if (response.ok) {
+        //     document.location.replace('/profile');
+        // } else {
+        //     alert(response.statusText);
+        //     console.log(response.json())
+        // }
+
+    };
 };
 
 document.querySelector('.signupUser').addEventListener('submit', signUpUser);
