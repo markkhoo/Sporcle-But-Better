@@ -70,7 +70,8 @@ router.post('/', async (req, res) => {
             res.status(200).json(userData);
         });
     } catch (err) {
-        res.status(500).json(err);
+        res.status(500).json(err.errors[0].message); 
+        // console.log(err.errors[0].message)
     }
 });
 
