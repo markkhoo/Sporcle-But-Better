@@ -63,6 +63,7 @@ body {
 
 #header #navigation ul li {
     list-style: none;
+    text-align: center;
 }
 
 #header #navigation ul li a {

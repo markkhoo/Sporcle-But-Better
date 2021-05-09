@@ -12,13 +12,13 @@ router.get('/', async (req, res) => {
             },
             include: [{
                 model: Game,
-                    include: {
+                include: {
                     model: Continent,
                 },
             }],
             order: [
-                [{model: Game}, 'score', 'DESC'],
-                [{model: Game}, 'time', 'ASC'],
+                [{ model: Game }, 'score', 'DESC'],
+                [{ model: Game }, 'time', 'ASC'],
             ]
         })
         res.status(200).json(userData);
@@ -55,37 +55,6 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.get('/searched/:username', withAuth, async (req, res) => {
-    try {
-        const userData = await User.findOne({
-            where: {
-                username: req.params.username,
-            },
-            include: [
-                {
-                    model: Game,
-                    include: {
-                        model: Continent,
-                    },
-                },
-            ],
-        });
-        if (!userData) {
-            res.status(400).json({ message: 'User not found!' });
-        }
-        const user = userData.get({ plain: true });
-        res.status(200).json(user);
-        // const user = userData.get({ plain: true });
-        // res.render('searchuser', {
-        //     user,
-        //     logged_in: req.session.logged_in
-        // });
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
-});
-
 // Create Account
 router.post('/', async (req, res) => {
     try {
@@ -101,10 +70,12 @@ router.post('/', async (req, res) => {
             res.status(200).json(userData);
         });
     } catch (err) {
-        res.status(500).json(err);
+        res.status(500).json(err.errors[0].message); 
+        // console.log(err.errors[0].message)
     }
 });
 
+// Log a user in
 router.post('/login', async (req, res) => {
     try {
         const userData = await User.findOne({
@@ -125,13 +96,14 @@ router.post('/login', async (req, res) => {
             req.session.user_id = userData.id;
             req.session.username = userData.username;
             req.session.logged_in = true;
-            res.status(200).json({user: userData, message: 'Log in Succesful!' });
+            res.status(200).json({ user: userData, message: 'Log in Succesful!' });
         });
     } catch (err) {
         res.status(500).json(err);
     }
 });
 
+// Log a user out
 router.post('/logout', withAuth, (req, res) => {
     if (req.session.logged_in) {
         req.session.destroy(() => {
