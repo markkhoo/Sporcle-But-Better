@@ -1,0 +1,11 @@
+#leaderContainer {
+    background-color: white;
+    margin: 2em;
+    /* padding: 1em; */
+};
+
+.leaderContinent {
+    padding: 1em;
+
+    background-color: yellow;
+}
