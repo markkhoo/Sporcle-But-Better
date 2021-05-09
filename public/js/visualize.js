@@ -331,11 +331,16 @@ function timerCalc(arr) {
 
 // Sort Fast Time
 function bestTime(arr) {
-    let best = 999999999;
-    for (let j = 0; j < arr.length; j++) {
-        if (arr[j].time < best) {
-            best = arr[j].time;
+    // check if array is empty or not
+    if(arr[0]){
+        let best = 999999999;
+        for (let j = 0; j < arr.length; j++) {
+            if (arr[j].time < best) {
+                best = arr[j].time;
+            };
         };
+        return Math.round(best / 1000); // Convert to seconds
+    } else {
+        return 0
     };
-    return Math.round(best / 1000); // Convert to seconds
 };
