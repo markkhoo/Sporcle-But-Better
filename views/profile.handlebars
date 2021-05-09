@@ -6,6 +6,41 @@
     </div>
     <div id="userProfile">
         <div id="topScores">
+            <h2>Top Scores</h2>
+            <div id="scoreContainer">
+                {{#each Games }}
+                <div class="userScore">
+                    <h3>{{Continent.name}}</h3>
+                    <p>Best Score: {{score}}/{{format_country_num Continent.id}}</p>
+                    <p>with Best Time: {{format_best_time time}}</p>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <div id="chartArea">
+        <div class="chartBox">
+            <h3>Total Games Played</h3>
+            <canvas id="chart2"></canvas>
+        </div>
+        <div class="chartBox">
+            <h3>Questions Correct per Continent</h3>
+            <canvas id="chart1"></canvas>
+        </div>
+        <div class="chartBox">
+            <h3>Time Completed per Continent</h3>
+            <canvas id="chart3"></canvas>
+        </div>
+    </div>
+</div>
+ 
+
+{{!-- <div id="profile">
+    <div id="userProf">
+        <h1>Welcome to {{cap_first_letter user.username}}'s profile!</h1>
+    </div>
+    <div id="userProfile">
+        <div id="topScores">
             <div class="spacing">
                 <h2>Top Scores</h2>
                 {{#each Games }}
@@ -17,7 +52,7 @@
                 {{/each}}
             </div>
         </div>
-        <div id="chartBox">
+        <div id="chartArea">
             <div class="spacing">
                 <div class="chartBox">
                     <h3>Total Games Played</h3>
@@ -34,7 +69,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 {{!--
 

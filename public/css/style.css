@@ -51,19 +51,20 @@ body {
 }
 
 #header #navigation ul {
-    display: flex;
     margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #header #navigation ul li {
     list-style: none;
-    text-align: center;
 }
 
 #header #navigation ul li a {
     padding: 10px;
     color: #fff;
-    font-size: 15px;
+    font-size: 17px;
     text-decoration: none;
 }
 
@@ -226,7 +227,7 @@ body {
 }
 
 #profile #userProf h1 {
-    color: white;
+    color: #fff;
     text-shadow: 2px 2px 2px #000;
 }
 
@@ -239,15 +240,20 @@ body {
 }
 
 #profile #userProfile #topScores {
-    width: 30%;
+    width: 100%;
     text-align: center;
 }
 
-#profile #userProfile #chartBox {
+#profile #userProfile #topScores h2 {
+    color: #fff;
+    text-shadow: 2px 2px 2px #000;
+}
+
+#profile #userProfile #chartArea {
     width: 70%;
 }
 
-#profile #userProfile .spacing {
+/* #profile #userProfile .spacing {
     margin: 10px;
     background-color: #fff;
     height: 100%;
@@ -268,11 +274,23 @@ body {
 
 #profile #userProfile #topScores .spacing p {
     margin-bottom: 10px;
+} */
+
+#scoreContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
-#profile #userProfile #chartBox .chartBox {
-    width: 500px;
+.userScore {
+    border: 2px solid #fff;
+    background-color: #fff;
 }
+
+/* #profile #userProfile #chartBox .chartBox {
+    width: 500px;
+} */
 
 @media screen and (min-width: 767px) {
 
