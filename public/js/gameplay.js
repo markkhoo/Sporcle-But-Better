@@ -1,5 +1,3 @@
-// const { response } = require("express");
-
 // ------ ALL VARIABLES ------------------------------------------
 // Global Pointers
 const capDisplay = document.getElementById("capitalContainer");
@@ -44,7 +42,6 @@ function mainGame(continent_id) {
             return response.json();
         })
         .then(data => {
-
             // Start Game
             onStartGame(data);
             currentContinent = continent_id;
@@ -54,9 +51,9 @@ function mainGame(continent_id) {
 
 // Submit Score
 function hideOnClick() {
+    // Hide Submit button when clicked to prevent multiple submissions
     this.style.setProperty('display', 'none');
-    // this.parentElement.innerHTML = "";
-
+    // Post Score
     fetch(`/api/game`, {
         method: 'POST',
         body: JSON.stringify({
