@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     font-family: 'Anton', sans-serif;
+    font-weight: lighter;
 }
 
 body {
@@ -71,6 +72,11 @@ body {
     color: #fff;
     font-size: 17px;
     text-decoration: none;
+    cursor: pointer;
+}
+
+#form .spacing {
+
 }
 
 #form #find-form {
