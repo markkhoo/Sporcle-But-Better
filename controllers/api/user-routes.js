@@ -55,49 +55,6 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// router.get('/:username', async (req, res) => {
-//     try {
-//         const userData = await User.findOne({
-//             where: {
-//                 username: req.params.username,
-//             },
-//             include: [
-//                 {
-//                     model: Game,
-//                     include: {
-//                         model: Continent,
-//                     },
-//                 },
-//             ],
-//         });
-//         if (!userData) {
-//             res.status(400).json({ message: 'User not found!' });
-//         }
-//         const user = userData.get({ plain: true });
-//         const highest = {}
-//         for (let i = 0; i < user.Games.length; i++) {
-//             let game = user.Games[i];
-//             if (!highest[game.Continent.name]) {
-//                 highest[game.Continent.name] = game;
-//             } else {
-//                 if (highest[game.Continent.name].score < game.score) {
-//                     highest[game.Continent.name] = game;
-//                 };
-//             }
-//         }
-//         const highscores = [...Object.values(highest)];
-//         console.log(highscores);
-//         res.status(200).json({Ghighscores, user});
-//         // res.render('searchuser', {
-//         //     user,
-//         //     Games: highscores,
-//         // });
-//     } catch (err) {
-//         console.log(err);
-//         res.status(500).json(err);
-//     }
-// });
-
 // Create Account
 router.post('/', async (req, res) => {
     try {
