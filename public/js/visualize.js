@@ -106,7 +106,7 @@ function displayVisuals(user_id) {
             let nyChart2 = new Chart(chart2, {
                 type: 'bar',
                 data: {
-                    labels: ['Arica', 'Asia', 'Australia', 'Europe', 'N America', 'S America', 'Antarctica'],
+                    labels: ['Africa', 'Asia', 'Australia', 'Europe', 'N America', 'S America', 'Antarctica'],
                     datasets: [{
                         label: 'Number of Games Played',
                         data: gamesPlayed,
@@ -154,7 +154,7 @@ function displayVisuals(user_id) {
             let nyChart1 = new Chart(chart1, {
                 type: 'bar',
                 data: {
-                    labels: ['Arica', 'Asia', 'Australia', 'Europe', 'N America', 'S America', 'Antarctica'],
+                    labels: ['Africa', 'Asia', 'Australia', 'Europe', 'N America', 'S America', 'Antarctica'],
                     datasets: [{
                         label: 'Average % Answers Correct',
                         data: scoreData,
@@ -226,7 +226,7 @@ function displayVisuals(user_id) {
             let nyChart3 = new Chart(chart3, {
                 type: 'bar',
                 data: {
-                    labels: ['Arica', 'Asia', 'Australia', 'Europe', 'N America', 'S America', 'Antarctica'],
+                    labels: ['Africa', 'Asia', 'Australia', 'Europe', 'N America', 'S America', 'Antarctica'],
                     datasets: [{
                         label: 'Average Time (Seconds)',
                         data: timerData,
