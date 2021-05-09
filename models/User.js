@@ -15,12 +15,12 @@ User.init(
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
-            unique: true,
         },
         username: {
             type: DataTypes.STRING,
             allowNull: false,
             is: /^[0-9a-z]{20}$/,
+            unique: true,
         },
         password: {
             type: DataTypes.STRING,
