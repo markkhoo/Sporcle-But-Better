@@ -74,7 +74,7 @@ router.get('/profile', withAuth, async (req, res) => {
     }
 });
 
-router.get('/search',  async (req, res) => {
+router.get('/search', async (req, res) => {
     try {
         const userData = await User.findOne({
             where: {
