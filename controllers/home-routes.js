@@ -125,7 +125,15 @@ router.get('/search', async (req, res) => {
 
 // Get Leaderboard
 router.get('/leader', async (req, res) => {
-    res.render('leaderboard');
+    if (req.session.logged_in) {
+        res.render('leaderboard', {
+            logged_in: true
+        });
+    } else {
+        res.render('leaderboard', {
+            logged_in: false
+        });
+    };
 });
 
 module.exports = router;
