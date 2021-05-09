@@ -74,12 +74,13 @@ router.get('/profile', withAuth, async (req, res) => {
     }
 });
 
-router.get('/profile/:username', withAuth, async (req, res) => {
+router.get('/search', async (req, res) => {
     try {
         const userData = await User.findOne({
             where: {
-                username: req.params.username,
+                username: req.query.username, // <= query here!!!
             },
+            attributes: { exclude: 'password' },
             include: [
                 {
                     model: Game,
@@ -105,11 +106,11 @@ router.get('/profile/:username', withAuth, async (req, res) => {
             }
         }
         const highscores = [...Object.values(highest)];
+        console.log(user);
         console.log(highscores);
-        res.render('searchuser', {
-            user,
+        res.render('profile', {
+            user: user,
             Games: highscores,
-            logged_in: true
         });
     } catch (err) {
         res.status(500).json(err);

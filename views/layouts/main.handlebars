@@ -51,24 +51,19 @@
             </div>
             <div id="form">
                 <div class="spacing">
-                    <form id="find-form">
-                        <div id="searchArea">
-                            <input id="searchInput" type="text" name="search" placeholder="Search keyword..." />
-                        </div>
-                        <div id="searchBtn">
-                            <button type="submit">Search</button>
-                        </div>
+                    <form id="find-form" method="GET" action="search">
+                        <input id="bacon" type="text" name="username" placeholder="Search keyword..." />
+                        <button type="submit">Search</button>
                     </form>
                 </div>
             </div>
         </div>
         {{{ body }}}
-    </div>
+        </div>
 
     {{#if logged_in}}
     <script src="/js/logout.js"></script>
     {{/if}}
-    <script src="/js/main.js"></script>
 </body>
 
 </html>
