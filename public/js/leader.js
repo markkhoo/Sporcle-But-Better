@@ -3,30 +3,20 @@ const container = document.getElementById('leaderContainer');
 fetch('/api/leader', { "method": "GET" })
 .then(res => {return res.json()})
 .then(data => {
-
-    // See Data
-    console.log(data)
-
-    //
     for(let i = 0; i < data.length; i++) {
         let div = document.createElement('div');
-        div.setAttribute("class", "leaderContinent");
-
         let h2 = document.createElement('h2');
         h2.textContent = data[i].continent;
-
         div.appendChild(h2);
-
         let ul = document.createElement('ul');
         for(let j = 0; j < data[i].games.length; j++){
             let li = document.createElement('li');
             li.textContent = `${cap_first_letter(data[i].games[j].user.username)}: ${data[i].games[j].score}/${format_country_num(data[i].id)} - ${msToTime(data[i].games[j].time)}`;
             ul.appendChild(li);
         };
-
         div.appendChild(ul);
         container.appendChild(div);
-    }
+    };
 });
 
 // Milliseconds to Time
