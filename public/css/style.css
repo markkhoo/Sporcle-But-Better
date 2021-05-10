@@ -139,6 +139,10 @@ body {
     margin-left: 30px;
 }
 
+#content #contentBtn  {
+    text-align: center;
+}
+
 #content #contentBtn button {
     border: 1px solid #ccc;
     padding: 6px 15px;
@@ -309,6 +313,44 @@ body {
         justify-content: right;
         align-items: flex-end;
     }    
+}
+
+@media only screen and (max-width: 480px) {
+    #header #navigation, #header #form {
+        width: 100%;
+    }
+
+    #header #title {
+        margin-bottom: 10px;
+    }
+    
+    #header #navigation .spacing ul {
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    #content {
+        width: 250px;
+    }
+
+    #signup {
+        width: 250px;
+    }
+
+    #signup .signupUser input {
+        width: 234px;
+        padding: 5px 10px;
+    }
+
+    #login {
+        width: 250px;
+    }
+
+    #login .loginForm input {
+        width: 234px;
+        padding: 5px 10px;
+    }
 }
 
 
