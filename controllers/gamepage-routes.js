@@ -23,38 +23,38 @@ router.get('/:id', withAuth, async (req, res) => {
     }
 });
 
-router.get('/login', (req, res) => {
-    if (req.session.logged_in) {
-        res.redirect('/profile');
-        return;
-    }
-    res.render('login');
-});
+// router.get('/login', (req, res) => {
+//     if (req.session.logged_in) {
+//         res.redirect('/profile');
+//         return;
+//     }
+//     res.render('login');
+// });
 
-router.get('/profile', withAuth, async (req, res) => {
-    try {
-        const userData = await User.findByPk(req.session.user_id, {
-            attributes: { exclude: 'password' },
-            include: [
-                {
-                    model: Game,
-                    include: {
-                        model: Continent,
-                    },
-                },
-            ],
-        });
-        const user = userData.get({ plain: true });
+// router.get('/profile', withAuth, async (req, res) => {
+//     try {
+//         const userData = await User.findByPk(req.session.user_id, {
+//             attributes: { exclude: 'password' },
+//             include: [
+//                 {
+//                     model: Game,
+//                     include: {
+//                         model: Continent,
+//                     },
+//                 },
+//             ],
+//         });
+//         const user = userData.get({ plain: true });
 
-        res.render('/profile', {
-            ...user,
-            logged_in: true
-        });
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
-});
+//         res.render('/profile', {
+//             ...user,
+//             logged_in: true
+//         });
+//     } catch (err) {
+//         console.log(err);
+//         res.status(500).json(err);
+//     }
+// });
 
 
 

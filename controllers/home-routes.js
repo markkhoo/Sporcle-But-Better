@@ -95,6 +95,10 @@ router.get('/search', async (req, res) => {
                     },
                 },
             ],
+            order: [
+                [{ model: Game }, 'score', 'DESC'],
+                [{ model: Game }, 'time', 'ASC'],
+            ],
         });
         const user = userData.get({ plain: true });
         const highest = {}
