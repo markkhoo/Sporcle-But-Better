@@ -1,5 +1,3 @@
-// const { response } = require("express");
-
 // ------ ALL VARIABLES ------------------------------------------
 // Global Pointers
 const capDisplay = document.getElementById("capitalContainer");
@@ -38,13 +36,14 @@ function init() {
 
 // Main Game Function
 function mainGame(continent_id) {
+    // Hide Start Button (prevents double click bug)
+    displayButton(false);
     // Fetch Game Data
     fetch(`/gamepage/${continent_id}`, { "method": "GET" })
         .then(response => {
             return response.json();
         })
         .then(data => {
-
             // Start Game
             onStartGame(data);
             currentContinent = continent_id;
@@ -54,9 +53,9 @@ function mainGame(continent_id) {
 
 // Submit Score
 function hideOnClick() {
+    // Hide Submit button when clicked to prevent multiple submissions
     this.style.setProperty('display', 'none');
-    // this.parentElement.innerHTML = "";
-
+    // Post Score
     fetch(`/api/game`, {
         method: 'POST',
         body: JSON.stringify({
@@ -100,7 +99,6 @@ function onStartGame(data) {
     currentContinent = 0;
     totalCountries = data.countries.length;
     renderScore();
-    displayButton(false);
     displayEndScreen(false);
     displayGame(true);
     displayScore(true);
@@ -287,37 +285,37 @@ function continentName(id) {
 
 // ------ ALL LISTENERS ------------------------------------------
 // GAME START per continent
-document.getElementById("gameAF").addEventListener("click", function (event) {
+document.getElementById("gameAF").addEventListener("click", async function (event) {
     event.preventDefault();
-    mainGame(1);
+    await mainGame(1);
 });
 
-document.getElementById("gameAS").addEventListener("click", function (event) {
+document.getElementById("gameAS").addEventListener("click", async function (event) {
     event.preventDefault();
-    mainGame(2);
+    await mainGame(2);
 });
 
-document.getElementById("gameAU").addEventListener("click", function (event) {
+document.getElementById("gameAU").addEventListener("click", async function (event) {
     event.preventDefault();
-    mainGame(3);
+    await mainGame(3);
 });
 
-document.getElementById("gameEU").addEventListener("click", function (event) {
+document.getElementById("gameEU").addEventListener("click", async function (event) {
     event.preventDefault();
-    mainGame(4);
+    await mainGame(4);
 });
 
-document.getElementById("gameNA").addEventListener("click", function (event) {
+document.getElementById("gameNA").addEventListener("click", async function (event) {
     event.preventDefault();
-    mainGame(5);
+    await mainGame(5);
 });
 
-document.getElementById("gameSA").addEventListener("click", function (event) {
+document.getElementById("gameSA").addEventListener("click", async function (event) {
     event.preventDefault();
-    mainGame(6);
+    await mainGame(6);
 });
 
-document.getElementById("gameAN").addEventListener("click", function (event) {
+document.getElementById("gameAN").addEventListener("click", async function (event) {
     event.preventDefault();
-    mainGame(7);
+    await mainGame(7);
 });
