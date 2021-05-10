@@ -43,6 +43,10 @@ router.get('/profile', withAuth, async (req, res) => {
                     },
                 },
             ],
+            order: [
+                [{ model: Game }, 'score', 'DESC'],
+                [{ model: Game }, 'time', 'ASC'],
+            ],
         });
         const user = userData.get({ plain: true });
 
