@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Anton', sans-serif;
+    font-family: 'Bebas Neue', cursive;
     font-weight: lighter;
 }
 
@@ -48,6 +48,12 @@ body {
     width: 33.33%;
 }
 
+#header #form {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
 #header #title h1 {
     font-family: 'Press Start 2P', cursive;
     font-size: 20px;
@@ -75,10 +81,6 @@ body {
     cursor: pointer;
 }
 
-#form .spacing {
-
-}
-
 #form #find-form {
     position: relative;
     display: flex;
@@ -88,6 +90,8 @@ body {
 
 #form #searchArea {
     width: 100%;
+    display: flex;
+    justify-content: flex-end;
 }
 
 #form #searchArea label {
@@ -224,14 +228,6 @@ body {
     font-size: 14px
 }
 
-/* #profile {
-    color: #000;
-    width: 100%;
-    height: 100%;
-    margin: 50px auto 0;
-    padding: 30px;
-} */
-
 #profile #userProf {
     text-align: center;
     margin: 30px 0;
@@ -260,29 +256,6 @@ body {
     text-shadow: 2px 2px 2px #000;
 }
 
-/* #profile #userProfile .spacing {
-    margin: 10px;
-    background-color: #fff;
-    height: 100%;
-}
-
-#profile #userProfile #topScores .spacing {
-    background-color: #fff;
-    height: 100%;
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-}
-
-#profile #userProfile #topScores .spacing h2 {
-    margin-bottom: 10px;
-}
-
-#profile #userProfile #topScores .spacing p {
-    margin-bottom: 10px;
-} */
-
 #scoreContainer {
     display: flex;
     flex-wrap: wrap;
@@ -298,7 +271,6 @@ body {
     padding: 10px;
 }
 
-
 #chartArea {
     margin-top: 20px;
     display: flex;
@@ -307,8 +279,43 @@ body {
     justify-content: space-evenly;
 }
 
-@media screen and (min-width: 767px) {
+/* @media screen and (max-width: 767px) {
+    #header #navigation ul {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
+    #header .spacing {
+        padding: 0px;
+    }
 }
+
+@media screen and (max-width: 568px) {
+    #header #navigation ul {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #header .spacing {
+        padding: 0px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    #header #navigation ul {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #header .spacing {
+        padding: 0px;
+    }s
+} */
 
 
