@@ -59,7 +59,7 @@ In this project we used handlebars to dynamically generate our HTML pagegs from 
 
 ![Code-Snippet](/images/mainhandlebar.PNG)
 
-![EndingGIF](/imagges/endingframe.gif)
+![EndingGIF](/images/endingframe.gif)
 
 
 Our application allows a user to create an account and save their scores to their account inside of our database. This way we can track the progress they are making and show differences between scores on the leaderboards.
@@ -83,7 +83,7 @@ When a user finishes the game they can send their score. This will post the scor
 
 A user can check their status on the leaderboard. Tracking where they are compared to all other users that have played the game.
 
-![Code-Snippet](/images/leaderggetrequest.PNG)
+![Code-Snippet](/images/leadergetrequest.PNG)
 
 ![Code-Snippet](/images/leaderboardget.PNG)
 
